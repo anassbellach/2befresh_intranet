@@ -22,5 +22,9 @@ export default defineConfig({
             ziggy: path.resolve('vendor/tightenco/ziggy')
         },
     },
-
+    build: {
+        manifest: true,
+        outDir: 'public/build',
+    },
+    base: '',
 });
