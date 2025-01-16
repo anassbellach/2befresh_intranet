@@ -1,7 +1,6 @@
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
-import { ZiggyVue } from 'ziggy'; // ZiggyVue plugin
-import { Ziggy } from './ziggy'; // Import your custom ziggy.js
+import { ZiggyVue } from 'ziggy-js';
 import '../css/app.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import MainLayout from "@/Layouts/MainLayout.vue";
