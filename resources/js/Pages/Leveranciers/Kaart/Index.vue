@@ -35,51 +35,54 @@ const props = defineProps({
 });
 
 onMounted(() => {
-    // Initialiseer de Google Map
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 10,
-        center: { lat: 52.028, lng: 4.901 }, // Standaard middelpunt (indien nodig dynamisch aanpassen)
-    });
+    // Attach the function to the global window object
+    window.initMap = () => {
+        // Initialize the Google Map
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 10,
+            center: { lat: 52.028, lng: 4.901 }, // Default center (adjust dynamically if needed)
+        });
 
-    // Maak een enkele InfoWindow-instantie om opnieuw te gebruiken
-    const infoWindow = new google.maps.InfoWindow();
+        // Create a single InfoWindow instance for reuse
+        const infoWindow = new google.maps.InfoWindow();
 
-    // Plaats markers voor elke leverancier
-    props.leveranciers.forEach((leverancier) => {
-        if (leverancier.latitude && leverancier.longitude) {
-            const position = {
-                lat: parseFloat(leverancier.latitude),
-                lng: parseFloat(leverancier.longitude)
-            };
+        // Place markers for each supplier
+        props.leveranciers.forEach((leverancier) => {
+            if (leverancier.latitude && leverancier.longitude) {
+                const position = {
+                    lat: parseFloat(leverancier.latitude),
+                    lng: parseFloat(leverancier.longitude),
+                };
 
-            const marker = new google.maps.Marker({
-                position: position,
-                map: map,
-                title: leverancier.leverancier_bedrijfsnaam,
-            });
+                const marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: leverancier.leverancier_bedrijfsnaam,
+                });
 
-            // Toon InfoWindow bij klik op marker
-            marker.addListener("click", () => {
-                // Stel de inhoud van de InfoWindow in
-                infoWindow.setContent(`
-                    <div class="p-2">
-                        <h3 class="font-bold text-[#1A1952]">${leverancier.leverancier_bedrijfsnaam}</h3>
-                        <p class="text-sm text-gray-500">Adres: ${leverancier.leverancier_adres}</p>
-                        <p class="text-sm text-gray-500">Postcode: ${leverancier.leverancier_postcode}</p>
-                        <p class="text-sm text-gray-500">Plaats: ${leverancier.leverancier_plaats}</p>
-                        <a href="/leverancier/${leverancier.leverancier_id}"
+                // Show InfoWindow on marker click
+                marker.addListener("click", () => {
+                    // Set the content of the InfoWindow
+                    infoWindow.setContent(`
+                        <div class="p-2">
+                            <h3 class="font-bold text-[#1A1952]">${leverancier.leverancier_bedrijfsnaam}</h3>
+                            <p class="text-sm text-gray-500">Adres: ${leverancier.leverancier_adres}</p>
+                            <p class="text-sm text-gray-500">Postcode: ${leverancier.leverancier_postcode}</p>
+                            <p class="text-sm text-gray-500">Plaats: ${leverancier.leverancier_plaats}</p>
+                            <a href="/leverancier/${leverancier.leverancier_id}"
                                target="_blank"
                                class="mt-2 inline-block px-4 py-2 bg-[#1A1952] text-white text-sm rounded-full shadow-md transform hover:scale-105 hover:shadow-lg transition duration-200">
                                Bekijk Details
-                        </a>
-                    </div>
-                `);
+                            </a>
+                        </div>
+                    `);
 
-                // Open de InfoWindow voor de aangeklikte marker
-                infoWindow.open(map, marker);
-            });
-
-        }
-    });
+                    // Open the InfoWindow for the clicked marker
+                    infoWindow.open(map, marker);
+                });
+            }
+        });
+    };
 });
+
 </script>
