@@ -109,15 +109,16 @@
                             <li>
                                 <button
                                     @click.prevent="logout"
-                                    class="w-full text-left block px-4 py-2 hover:bg-gray-100 rounded-b-2xl hover:text-[#FF9D37] relative group"
+                                    class="w-full text-left block px-4 py-2 hover:bg-gray-100 rounded-b-2xl hover:text-[#FF0000] relative group"
                                 >
                                     <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
                                     <span
-                                        class="absolute ml-2 top-1/2 transform -translate-y-1/2 w-2.5 h-2.5 bg-[#FF9D37] rounded-full opacity-0 group-hover:opacity-100"
+                                        class="absolute ml-2 top-1/2 transform -translate-y-1/2 w-2.5 h-2.5 bg-[#FF0000] rounded-full opacity-0 group-hover:opacity-100"
                                     ></span>
                                 </button>
                             </li>
                         </ul>
+
                     </div>
                 </transition>
             </div>
