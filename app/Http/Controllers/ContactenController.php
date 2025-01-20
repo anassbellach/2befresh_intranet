@@ -97,7 +97,6 @@ class ContactenController extends Controller
                 'contact_mail_2' => 'nullable|email|max:255',
                 'contact_mail_3' => 'nullable|email|max:255',
                 'contact_voorkeur' => 'nullable|string|max:255',
-                'contact_actief' => 'required|boolean',
             ])
         );
 

@@ -113,7 +113,6 @@ class KlantenController extends Controller
             'klant_postcode' => 'required|string|max:10',
             'klant_plaats' => 'required|string|max:255',
             'klant_land' => 'required|string|max:255',
-            'klant_actief' => 'required|boolean',
         ]);
 
         $klant->update($validatedData);

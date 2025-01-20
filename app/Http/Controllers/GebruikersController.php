@@ -98,7 +98,6 @@ class GebruikersController extends Controller
                 'user_lastname' => 'required|string|max:255',
                 'password' => 'nullable|string|min:8',
                 'user_activated' => 'nullable|boolean',
-                'user_activation_code' => 'nullable|string|max:255',
                 'user_rol' => 'required|string|max:255',
             ])
         );

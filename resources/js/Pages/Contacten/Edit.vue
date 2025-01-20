@@ -56,9 +56,9 @@
                             id="contact_geslacht"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         >
-                            <option value="male">Man</option>
-                            <option value="female">Vrouw</option>
-                            <option value="other">Anders</option>
+                            <option value="Man">Man</option>
+                            <option value="Vrouw">Vrouw</option>
+                            <option value="Anders">Anders</option>
                         </select>
                         <span v-if="form.errors.contact_geslacht" class="text-red-500 text-sm">{{ form.errors.contact_geslacht }}</span>
                     </td>
@@ -79,6 +79,20 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
+                        <label for="contact_telefoon_kantoor" class="block text-sm font-medium text-gray-700">Telefoonnummer (Kantoor)</label>
+                    </td>
+                    <td class="py-2">
+                        <input
+                            v-model="form.contact_telefoon_kantoor"
+                            type="text"
+                            id="contact_telefoon_kantoor"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                        <span v-if="form.errors.contact_telefoon_kantoor" class="text-red-500 text-sm">{{ form.errors.contact_telefoon_kantoor }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 pr-4">
                         <label for="contact_mail" class="block text-sm font-medium text-gray-700">E-mailadres</label>
                     </td>
                     <td class="py-2">
@@ -93,32 +107,16 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_voorkeur" class="block text-sm font-medium text-gray-700">Voorkeur</label>
+                        <label for="contact_mail_2" class="block text-sm font-medium text-gray-700">E-mailadres 2</label>
                     </td>
                     <td class="py-2">
                         <input
-                            v-model="form.contact_voorkeur"
-                            type="text"
-                            id="contact_voorkeur"
+                            v-model="form.contact_mail_2"
+                            type="email"
+                            id="contact_mail_2"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
-                        <span v-if="form.errors.contact_voorkeur" class="text-red-500 text-sm">{{ form.errors.contact_voorkeur }}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 pr-4">
-                        <label for="contact_actief" class="block text-sm font-medium text-gray-700">Actief</label>
-                    </td>
-                    <td class="py-2">
-                        <select
-                            v-model="form.contact_actief"
-                            id="contact_actief"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        >
-                            <option value="1">Actief</option>
-                            <option value="0">Inactief</option>
-                        </select>
-                        <span v-if="form.errors.contact_actief" class="text-red-500 text-sm">{{ form.errors.contact_actief }}</span>
+                        <span v-if="form.errors.contact_mail_2" class="text-red-500 text-sm">{{ form.errors.contact_mail_2 }}</span>
                     </td>
                 </tr>
                 </tbody>
@@ -148,12 +146,12 @@ const form = useForm({
     contact_geboortedatum: props.contact.contact_geboortedatum,
     contact_geslacht: props.contact.contact_geslacht,
     contact_telefoon: props.contact.contact_telefoon,
+    contact_telefoon_kantoor: props.contact.contact_telefoon_kantoor,
     contact_mail: props.contact.contact_mail,
-    contact_voorkeur: props.contact.contact_voorkeur,
-    contact_actief: props.contact.contact_actief,
+    contact_mail_2: props.contact.contact_mail_2,
 });
 
 const update = () => {
-    form.put(route('contact.update', { contact: props.contact.contact_id }));
+    form.put(route('contact.update', {contact: props.contact.contact_id}));
 };
 </script>

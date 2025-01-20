@@ -139,23 +139,23 @@
                         <span v-if="form.errors.klant_land" class="text-red-500 text-sm">{{ form.errors.klant_land }}</span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="py-2 pr-4">
-                        <label for="klant_actief" class="block text-sm font-medium text-gray-700">Status</label>
-                    </td>
-                    <td class="py-2">
-                        <select
-                            v-model="form.klant_actief"
-                            id="klant_actief"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            required
-                        >
-                            <option value="1">Actief</option>
-                            <option value="0">Inactief</option>
-                        </select>
-                        <span v-if="form.errors.klant_actief" class="text-red-500 text-sm">{{ form.errors.klant_actief }}</span>
-                    </td>
-                </tr>
+<!--                <tr>-->
+<!--                    <td class="py-2 pr-4">-->
+<!--                        <label for="klant_actief" class="block text-sm font-medium text-gray-700">Status</label>-->
+<!--                    </td>-->
+<!--                    <td class="py-2">-->
+<!--                        <select-->
+<!--                            v-model="form.klant_actief"-->
+<!--                            id="klant_actief"-->
+<!--                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"-->
+<!--                            required-->
+<!--                        >-->
+<!--                            <option value="1">Actief</option>-->
+<!--                            <option value="0">Inactief</option>-->
+<!--                        </select>-->
+<!--                        <span v-if="form.errors.klant_actief" class="text-red-500 text-sm">{{ form.errors.klant_actief }}</span>-->
+<!--                    </td>-->
+<!--                </tr>-->
                 </tbody>
             </table>
 
@@ -188,7 +188,6 @@ const form = useForm({
     klant_postcode: props.klant.klant_postcode,
     klant_plaats: props.klant.klant_plaats,
     klant_land: props.klant.klant_land,
-    klant_actief: props.klant.klant_actief,
 });
 
 const countries = ref([]);

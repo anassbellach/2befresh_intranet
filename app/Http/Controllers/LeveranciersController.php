@@ -102,12 +102,10 @@ class LeveranciersController extends Controller
             'leverancier_bedrijfsnaam' => 'required|string|max:255',
             'leverancier_email' => 'nullable|email|max:255',
             'leverancier_telefoon' => 'nullable|string|max:15',
-            'leverancier_sinds' => 'required|string|max:10',
             'leverancier_adres' => 'required|string|max:255',
             'leverancier_postcode' => 'required|string|max:10',
             'leverancier_plaats' => 'required|string|max:255',
             'leverancier_land' => 'required|string|max:255',
-            'leverancier_actief' => 'required|boolean',
         ]);
 
         $leverancier->update($validatedData);

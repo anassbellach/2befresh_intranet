@@ -57,22 +57,22 @@
                         <span v-if="form.errors.link" class="text-red-500 text-sm">{{ form.errors.link }}</span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="py-2 pr-4">
-                        <label for="referral_activated" class="block text-sm font-medium text-gray-700">Referral Activeren</label>
-                    </td>
-                    <td class="py-2">
-                        <select
-                            v-model="form.referral_activated"
-                            id="referral_activated"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        >
-                            <option value="1">Actief</option>
-                            <option value="0">Inactief</option>
-                        </select>
-                        <span v-if="form.errors.referral_activated" class="text-red-500 text-sm">{{ form.errors.referral_activated }}</span>
-                    </td>
-                </tr>
+<!--                <tr>-->
+<!--                    <td class="py-2 pr-4">-->
+<!--                        <label for="referral_activated" class="block text-sm font-medium text-gray-700">Referral Activeren</label>-->
+<!--                    </td>-->
+<!--                    <td class="py-2">-->
+<!--                        <select-->
+<!--                            v-model="form.referral_activated"-->
+<!--                            id="referral_activated"-->
+<!--                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"-->
+<!--                        >-->
+<!--                            <option value="1">Actief</option>-->
+<!--                            <option value="0">Inactief</option>-->
+<!--                        </select>-->
+<!--                        <span v-if="form.errors.referral_activated" class="text-red-500 text-sm">{{ form.errors.referral_activated }}</span>-->
+<!--                    </td>-->
+<!--                </tr>-->
                 </tbody>
             </table>
 
@@ -100,7 +100,6 @@ const form = useForm({
     titel: props.referral.titel,
     omschrijving: props.referral.omschrijving,
     link: props.referral.link,
-    referral_activated: props.referral.referral_activated,
 });
 
 const update = () => form.put(route('referral.update', {referral: props.referral.id}));

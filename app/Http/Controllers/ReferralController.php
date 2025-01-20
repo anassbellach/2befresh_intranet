@@ -47,7 +47,6 @@ class ReferralController extends Controller
                 'titel' => 'required|string|max:255',
                 'omschrijving' => 'required|string|max:255',
                 'link' => 'required|string|max:255',
-                'referral_activated' => 'required|boolean',
             ])
         );
 
