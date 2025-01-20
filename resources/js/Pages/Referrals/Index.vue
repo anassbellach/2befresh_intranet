@@ -6,7 +6,7 @@
 
         <!-- Header Sectie -->
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-semibold text-gray-900">Referrals</h1>
+            <h1 class="text-4xl font-semibold text-gray-900">Referrals</h1>
             <Link
                 :href="route('referral.create')"
                 class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600 transition-all"

@@ -151,9 +151,9 @@ const countries = ref([]);
 
 onMounted(async () => {
     try {
-        const response = await fetch('http://api.geonames.org/countryInfoJSON?username=anass990&lang=nl');
+        const response = await fetch('https://secure.geonames.org/countryInfoJSON?username=anass990&lang=nl');
         const data = await response.json();
-        countries.value = data.geonames.map((country) => country.countryName);
+        countries.value = data.geonames.map(country => country.countryName);
     } catch (error) {
         console.error('Fout bij het ophalen van landen:', error);
     }

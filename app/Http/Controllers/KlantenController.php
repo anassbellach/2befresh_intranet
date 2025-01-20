@@ -104,24 +104,34 @@ class KlantenController extends Controller
     public function update(Request $request, Klant $klant)
     {
         // Validate and update the klant
-        $klant->update(
-            $request->validate([
-                'klant_bedrijfsnaam' => 'required|string|max:255',
-                'klant_kvk' => 'required|digits:8',
-                'klant_mail' => 'required|email|max:50',
-                'klant_telefoon' => 'required|string|max:15',
-                'klant_sinds' => 'required|date',
-                'klant_adres' => 'required|string|max:255',
-                'klant_postcode' => 'required|string|max:10',
-                'klant_plaats' => 'required|string|max:255',
-                'klant_land' => 'required|string|max:255',
-                'klant_actief' => 'required|boolean',
-            ])
-        );
+        $validatedData = $request->validate([
+            'klant_bedrijfsnaam' => 'required|string|max:255',
+            'klant_kvk' => 'required|digits:8',
+            'klant_mail' => 'required|email|max:50',
+            'klant_telefoon' => 'required|string|max:15',
+            'klant_adres' => 'required|string|max:255',
+            'klant_postcode' => 'required|string|max:10',
+            'klant_plaats' => 'required|string|max:255',
+            'klant_land' => 'required|string|max:255',
+            'klant_actief' => 'required|boolean',
+        ]);
+
+        $klant->update($validatedData);
+
+        // Geocode the updated address
+        $fullAddress = "{$klant->klant_adres}, {$klant->klant_postcode}, {$klant->klant_plaats}, {$klant->klant_land}";
+        $coordinates = $this->geocodeAddress($fullAddress);
+
+        if ($coordinates) {
+            $klant->latitude = $coordinates['lat'];
+            $klant->longitude = $coordinates['lng'];
+            $klant->save();
+        }
 
         return redirect()->route('klant.index')
             ->with('success', 'Klantgegevens succesvol bijgewerkt!');
     }
+
 
     public function destroy(Klant $klant)
     {

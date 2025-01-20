@@ -4,12 +4,12 @@
         <success-messages></success-messages>
 
         <div class="flex flex-col max-w-6xl mx-auto">
-            <!-- Header -->
-            <div class="flex justify-between items-center mb-6">
-                <h1 class="text-3xl font-semibold text-gray-800">Leveranciers</h1>
+            <!-- Header Sectie -->
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-4xl font-semibold text-gray-900">Leveranciers</h1>
                 <Link
                     :href="route('leverancier.create')"
-                    class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gradient-to-l"
+                    class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600 transition-all"
                 >
                     Nieuwe Leverancier Aanmaken
                 </Link>

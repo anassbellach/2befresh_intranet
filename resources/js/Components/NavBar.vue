@@ -147,7 +147,7 @@
                     <span class="ml-2 w-2.5 h-2.5 bg-[#FF9D37] rounded-full inline-block align-middle"></span>
                 </a>
                 <a :href="route('klant.create')" class="text-gray-800 hover:text-[#FF9D37] font-medium">
-                    Klant toevoegen
+                    Klant aanmaken
                     <span class="ml-2 w-2.5 h-2.5 bg-[#FF9D37] rounded-full inline-block align-middle"></span>
                 </a>
                 <a href="/klant/kaart" class="text-gray-800 hover:text-[#FF9D37] font-medium">
@@ -175,7 +175,7 @@
                     <span class="ml-2 w-2.5 h-2.5 bg-[#FF9D37] rounded-full inline-block align-middle"></span>
                 </a>
                 <a :href="route('contact.create')" class="text-gray-800 hover:text-[#FF9D37] font-medium">
-                    Contact toevoegen
+                    Contact aanmaken
                     <span class="ml-2 w-2.5 h-2.5 bg-[#FF9D37] rounded-full inline-block align-middle"></span>
                 </a>
             </div>
@@ -195,7 +195,7 @@
                     <span class="ml-2 w-2.5 h-2.5 bg-[#FF9D37] rounded-full inline-block align-middle"></span>
                 </a>
                 <a :href="route('leverancier.create')" class="text-gray-800 hover:text-[#FF9D37] font-medium">
-                    Leverancier toevoegen
+                    Leverancier aanmaken
                     <span class="ml-2 w-2.5 h-2.5 bg-[#FF9D37] rounded-full inline-block align-middle"></span>
                 </a>
                 <a href="/leverancier/kaart" class="text-gray-800 hover:text-[#FF9D37] font-medium">
@@ -244,7 +244,7 @@
                                 <i class="fa-solid fa-list mr-2"></i> Klantenlijst
                             </a>
                             <a :href="route('klant.create')" class="block text-white hover:text-[#FF9D37] font-semibold">
-                                <i class="fa-solid fa-plus mr-2"></i> Klant toevoegen
+                                <i class="fa-solid fa-plus mr-2"></i> Klant aanmaken
                             </a>
                             <a href="/klant/kaart" class="block text-white hover:text-[#FF9D37] font-semibold">
                                 <i class="fa-solid fa-map-marker-alt mr-2"></i> Klanten kaart
@@ -269,7 +269,7 @@
                                 <i class="fa-solid fa-list mr-2"></i> Contactenlijst
                             </a>
                             <a :href="route('contact.create')" class="block text-white hover:text-[#FF9D37] font-semibold">
-                                <i class="fa-solid fa-plus mr-2"></i> Contact toevoegen
+                                <i class="fa-solid fa-plus mr-2"></i> Contact aanmaken
                             </a>
                         </div>
                     </div>
@@ -288,7 +288,7 @@
                                 <i class="fa-solid fa-list mr-2"></i> Leverancierslijst
                             </a>
                             <a :href="route('leverancier.create')" class="block text-white hover:text-[#FF9D37] font-semibold">
-                                <i class="fa-solid fa-plus mr-2"></i> Leverancier toevoegen
+                                <i class="fa-solid fa-plus mr-2"></i> Leverancier aanmaken
                             </a>
                         </div>
                     </div>

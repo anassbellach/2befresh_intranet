@@ -126,13 +126,16 @@
                         <label for="klant_land" class="block text-sm font-medium text-gray-700">Land</label>
                     </td>
                     <td class="py-2">
-                        <input
+                        <select
                             v-model="form.klant_land"
-                            type="text"
                             id="klant_land"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             required
-                        />
+                        >
+                            <option v-for="country in countries" :key="country" :value="country">
+                                {{ country }}
+                            </option>
+                        </select>
                         <span v-if="form.errors.klant_land" class="text-red-500 text-sm">{{ form.errors.klant_land }}</span>
                     </td>
                 </tr>
@@ -169,7 +172,8 @@
 </template>
 
 <script setup>
-import {Link, useForm} from "@inertiajs/vue3";
+import { ref, onMounted } from 'vue';
+import { Link, useForm } from "@inertiajs/vue3";
 
 const props = defineProps({
     klant: Object,
@@ -185,6 +189,18 @@ const form = useForm({
     klant_plaats: props.klant.klant_plaats,
     klant_land: props.klant.klant_land,
     klant_actief: props.klant.klant_actief,
+});
+
+const countries = ref([]);
+
+onMounted(async () => {
+    try {
+        const response = await fetch('https://secure.geonames.org/countryInfoJSON?username=anass990&lang=nl');
+        const data = await response.json();
+        countries.value = data.geonames.map(country => country.countryName);
+    } catch (error) {
+        console.error('Fout bij het ophalen van landen:', error);
+    }
 });
 
 const update = () => {

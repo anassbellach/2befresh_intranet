@@ -124,6 +124,7 @@
                             id="klant_land"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         >
+                            <option value="" disabled>Selecteer een land</option>
                             <option v-for="country in countries" :key="country" :value="country">
                                 {{ country }}
                             </option>
@@ -137,7 +138,7 @@
             <div class="flex justify-end mt-6">
                 <button
                     type="submit"
-                    class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gradient-to-l"
+                    class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gradient-to-l"
                 >
                     Klant Aanmaken
                 </button>
@@ -166,7 +167,7 @@ const countries = ref([]);
 
 onMounted(async () => {
     try {
-        const response = await fetch('http://api.geonames.org/countryInfoJSON?username=anass990&lang=nl');
+        const response = await fetch('https://secure.geonames.org/countryInfoJSON?username=anass990&lang=nl');
         const data = await response.json();
         countries.value = data.geonames.map(country => country.countryName);
     } catch (error) {

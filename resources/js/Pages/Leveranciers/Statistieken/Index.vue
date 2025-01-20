@@ -1,69 +1,69 @@
 <template>
     <div class="p-6 space-y-8 min-h-screen max-w-7xl mx-auto">
-        <!-- Container for the charts section -->
+        <!-- Container voor de grafieksectie -->
         <div class="p-6 rounded-3xl bg-white shadow-md">
-            <!-- Chart title -->
+            <!-- Grafiektitel -->
             <h3 class="text-lg font-semibold mb-4">Leveranciers per Plaats</h3>
-            <!-- Description of the chart -->
+            <!-- Beschrijving van de grafiek -->
             <p class="text-sm text-gray-400 mb-6">
-                This chart shows the distribution of leevranciers across different cities.
+                Deze grafiek toont de verdeling van leveranciers over verschillende steden.
             </p>
-            <!-- Canvas element for rendering the chart -->
+            <!-- Canvas-element voor het weergeven van de grafiek -->
             <canvas id="leveranciersPerPlaatsChart" class="max-h-screen w-full"></canvas>
         </div>
     </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue"; // Lifecycle hook for code to run after the component is mounted
-import { Chart } from "chart.js/auto"; // Importing Chart.js library
+import {onMounted} from "vue"; // Lifecycle hook voor code die moet worden uitgevoerd nadat de component is geladen
+import {Chart} from "chart.js/auto"; // Importeren van de Chart.js-bibliotheek
 
-// Defining the props passed into this component
+// Definiëren van de props die naar deze component worden doorgegeven
 const props = defineProps({
     leveranciers_per_plaats: {
-        type: Object, // Expecting an object mapping city names to klant numbers
-        required: true, // This prop is required
+        type: Object, // Verwacht een object dat stadsnamen aan aantal leveranciers koppelt
+        required: true, // Deze prop is verplicht
     },
 });
 
-// Lifecycle hook to initialize the chart after the DOM is mounted
+// Lifecycle hook om de grafiek te initialiseren nadat de DOM is geladen
 onMounted(() => {
-    // Access the canvas element for rendering the chart
+    // Toegang tot het canvas-element voor het weergeven van de grafiek
     const leveranciersPerPlaatsChartCtx = document
         .getElementById("leveranciersPerPlaatsChart")
         .getContext("2d");
 
-    // Create a gradient for the chart bars
+    // Maak een gradient voor de grafiekbalken
     const gradient = leveranciersPerPlaatsChartCtx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, "#F1487A"); // Starting color of the gradient
-    gradient.addColorStop(1, "#FFA532"); // Ending color of the gradient
+    gradient.addColorStop(0, "#F1487A"); // Startkleur van de gradient
+    gradient.addColorStop(1, "#FFA532"); // Eindkleur van de gradient
 
-    // Initialize a new Chart.js bar chart
+    // Initialiseren van een nieuwe Chart.js staafgrafiek
     new Chart(leveranciersPerPlaatsChartCtx, {
-        type: "bar", // Type of chart: bar chart
+        type: "bar", // Type grafiek: staafgrafiek
         data: {
-            labels: Object.keys(props.leveranciers_per_plaats), // X-axis labels (city names)
+            labels: Object.keys(props.leveranciers_per_plaats), // X-as labels (stadsnamen)
             datasets: [
                 {
-                    label: "Number of Leveranciers", // Label for the dataset
-                    data: Object.values(props.leveranciers_per_plaats), // Y-axis data (number of klanten)
-                    backgroundColor: gradient, // Use the gradient for the bars
-                    borderColor: "#1A1952", // Border color for the bars
-                    borderWidth: 2, // Width of the bar borders
+                    label: "Aantal Leveranciers", // Label voor de dataset
+                    data: Object.values(props.leveranciers_per_plaats), // Y-as data (aantal leveranciers)
+                    backgroundColor: gradient, // Gebruik de gradient voor de balken
+                    borderColor: "#1A1952", // Randkleur van de balken
+                    borderWidth: 2, // Breedte van de balkranden
                 },
             ],
         },
         options: {
-            responsive: true, // Make the chart responsive
-            maintainAspectRatio: false, // Allow dynamic resizing
+            responsive: true, // Maak de grafiek responsief
+            maintainAspectRatio: false, // Sta dynamische schaal toe
             plugins: {
                 legend: {
-                    display: true, // Display the legend
-                    position: "top", // Position of the legend
+                    display: true, // Toon de legenda
+                    position: "top", // Positie van de legenda
                     labels: {
-                        color: "#1A1952", // Text color for the legend
+                        color: "#1A1952", // Tekstkleur voor de legenda
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Font family for the legend
+                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de legenda
                         },
                     },
                 },
@@ -71,42 +71,42 @@ onMounted(() => {
             scales: {
                 x: {
                     title: {
-                        display: true, // Display title for the X-axis
-                        text: "Plaatsen", // Title text for the X-axis
-                        color: "#6B7280", // Text color for the X-axis title
+                        display: true, // Toon titel voor de X-as
+                        text: "Plaatsen", // Titeltekst voor de X-as
+                        color: "#6B7280", // Tekstkleur voor de titel van de X-as
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Font family for the X-axis title
+                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de titel van de X-as
                         },
                     },
                     ticks: {
-                        color: "#6B7280", // Text color for the X-axis ticks
+                        color: "#6B7280", // Tekstkleur voor de ticks op de X-as
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Font family for the X-axis ticks
+                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de ticks op de X-as
                         },
                     },
                     grid: {
-                        color: "#E5E7EB", // Color of the grid lines on the X-axis
+                        color: "#E5E7EB", // Kleur van de rasterlijnen op de X-as
                     },
                 },
                 y: {
                     title: {
-                        display: true, // Display title for the Y-axis
-                        text: "Number of Leveranciers", // Title text for the Y-axis
-                        color: "#6B7280", // Text color for the Y-axis title
+                        display: true, // Toon titel voor de Y-as
+                        text: "Aantal Leveranciers", // Titeltekst voor de Y-as
+                        color: "#6B7280", // Tekstkleur voor de titel van de Y-as
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Font family for the Y-axis title
+                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de titel van de Y-as
                         },
                     },
                     ticks: {
-                        color: "#6B7280", // Text color for the Y-axis ticks
+                        color: "#6B7280", // Tekstkleur voor de ticks op de Y-as
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Font family for the Y-axis ticks
+                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de ticks op de Y-as
                         },
                     },
                     grid: {
-                        color: "#E5E7EB", // Color of the grid lines on the Y-axis
+                        color: "#E5E7EB", // Kleur van de rasterlijnen op de Y-as
                     },
-                    beginAtZero: true, // Ensure the Y-axis starts at 0
+                    beginAtZero: true, // Zorg ervoor dat de Y-as begint bij 0
                 },
             },
         },

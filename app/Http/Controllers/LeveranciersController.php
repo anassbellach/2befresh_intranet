@@ -97,25 +97,35 @@ class LeveranciersController extends Controller
 
     public function update(Request $request, Leverancier $leverancier)
     {
-        $leverancier->update(
-            $request->validate([
-                'leverancier_bedrijfsnaam' => 'required|string|max:255',
-                'leverancier_email' => 'nullable|email|max:255',
-                'leverancier_telefoon' => 'nullable|string|max:15',
-                'leverancier_sinds' => 'nullable|date',
-                'leverancier_adres' => 'required|string|max:255',
-                'leverancier_postcode' => 'required|string|max:10',
-                'leverancier_plaats' => 'required|string|max:255',
-                'leverancier_land' => 'required|string|max:255',
-                'latitude' => 'required|numeric|between:-90,90',
-                'longitude' => 'required|numeric|between:-180,180',
-                'leverancier_actief' => 'required|boolean',
-            ])
-        );
+        // Validate and update the leverancier
+        $validatedData = $request->validate([
+            'leverancier_bedrijfsnaam' => 'required|string|max:255',
+            'leverancier_email' => 'nullable|email|max:255',
+            'leverancier_telefoon' => 'nullable|string|max:15',
+            'leverancier_sinds' => 'required|string|max:10',
+            'leverancier_adres' => 'required|string|max:255',
+            'leverancier_postcode' => 'required|string|max:10',
+            'leverancier_plaats' => 'required|string|max:255',
+            'leverancier_land' => 'required|string|max:255',
+            'leverancier_actief' => 'required|boolean',
+        ]);
+
+        $leverancier->update($validatedData);
+
+        // Geocode the updated address
+        $fullAddress = "{$leverancier->leverancier_adres}, {$leverancier->leverancier_postcode}, {$leverancier->leverancier_plaats}, {$leverancier->leverancier_land}";
+        $coordinates = $this->geocodeAddress($fullAddress);
+
+        if ($coordinates) {
+            $leverancier->latitude = $coordinates['lat'];
+            $leverancier->longitude = $coordinates['lng'];
+            $leverancier->save();
+        }
 
         return redirect()->route('leverancier.index')
-            ->with('success', 'Leverancier succesvol bijgewerkt!');
+            ->with('success', 'Leveranciergegevens succesvol bijgewerkt!');
     }
+
 
     public function destroy(Leverancier $leverancier)
     {
@@ -135,12 +145,14 @@ class LeveranciersController extends Controller
 
     public function statistieken()
     {
-        return inertia('Leveranciers/Statistieken/Index',[
-            'leveranciers_per_plaats' => Leverancier::selectRaw('leverancier_plaats, COUNT(*) as count')
+        return inertia('Leveranciers/Statistieken/Index', [
+            'leveranciers_per_plaats' => Leverancier::withTrashed()
+            ->selectRaw('leverancier_plaats, COUNT(*) as count')
                 ->groupBy('leverancier_plaats')
                 ->pluck('count', 'leverancier_plaats'),
         ]);
     }
+
 
     private function geocodeAddress($address)
     {
