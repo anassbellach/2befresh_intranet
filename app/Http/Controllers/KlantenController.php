@@ -56,6 +56,10 @@ class KlantenController extends Controller
 
     public function store(Request $request)
     {
+        // Set the current date for klant_sinds in DD-MM-YYYY format
+        $currentDate = now()->format('d-m-Y');
+        $request->merge(['klant_sinds' => $currentDate]);
+
         // Validate and create the klant
         $klant = Klant::create(
             $request->validate([

@@ -50,6 +50,9 @@ class LeveranciersController extends Controller
 
     public function store(Request $request)
     {
+        // Set the current date for klant_sinds in DD-MM-YYYY format
+        $currentDate = now()->format('d-m-Y');
+        $request->merge(['leverancier_sinds' => $currentDate]);
 
         $leverancier = Leverancier::create(
             $request->validate([
