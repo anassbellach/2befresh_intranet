@@ -1,69 +1,66 @@
 <template>
     <div class="p-6 space-y-8 min-h-screen max-w-7xl mx-auto">
-        <!-- Container voor de grafieksectie -->
         <div class="p-6 rounded-3xl bg-white shadow-md">
-            <!-- Grafiektitel -->
+
             <h3 class="text-lg font-semibold mb-4">Klanten per Plaats</h3>
-            <!-- Beschrijving van de grafiek -->
             <p class="text-sm text-gray-400 mb-6">
                 Deze grafiek toont de verdeling van klanten over verschillende steden.
             </p>
-            <!-- Canvas-element voor het weergeven van de grafiek -->
             <canvas id="klantenPerPlaatsChart" class="max-h-screen w-full"></canvas>
         </div>
     </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue"; // Lifecycle hook voor code die moet worden uitgevoerd nadat de component is geladen
-import { Chart } from "chart.js/auto"; // Importeren van de Chart.js-bibliotheek
+import { onMounted } from "vue";
+import { Chart } from "chart.js/auto";
 
-// Definiëren van de props die naar deze component worden doorgegeven
+
 const props = defineProps({
     klanten_per_plaats: {
-        type: Object, // Verwacht een object dat stadsnamen aan klantenaantallen koppelt
-        required: true, // Deze prop is verplicht
+        type: Object,
+        required: true,
     },
 });
 
-// Lifecycle hook om de grafiek te initialiseren nadat de DOM is geladen
+
 onMounted(() => {
-    // Toegang tot het canvas-element voor het weergeven van de grafiek
+
     const klantenPerPlaatsChartCtx = document
         .getElementById("klantenPerPlaatsChart")
         .getContext("2d");
 
-    // Maak een gradient voor de grafiekbalken
-    const gradient = klantenPerPlaatsChartCtx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, "#F1487A"); // Startkleur van de gradient
-    gradient.addColorStop(1, "#FFA532"); // Eindkleur van de gradient
 
-    // Initialiseren van een nieuwe Chart.js staafgrafiek
+    const gradient = klantenPerPlaatsChartCtx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, "#F1487A");
+    gradient.addColorStop(1, "#FFA532");
+
+
     new Chart(klantenPerPlaatsChartCtx, {
-        type: "bar", // Type grafiek: staafgrafiek
+        type: "bar",
         data: {
-            labels: Object.keys(props.klanten_per_plaats), // X-as labels (stadsnamen)
+            labels: Object.keys(props.klanten_per_plaats),
             datasets: [
                 {
-                    label: "Aantal Klanten", // Label voor de dataset
-                    data: Object.values(props.klanten_per_plaats), // Y-as data (aantal klanten)
-                    backgroundColor: gradient, // Gebruik de gradient voor de balken
-                    borderColor: "#1A1952", // Randkleur van de balken
-                    borderWidth: 2, // Breedte van de balkranden
+                    label: "Aantal Klanten",
+                    data: Object.values(props.klanten_per_plaats),
+                    backgroundColor: gradient,
+                    borderColor: "#1A1952",
+                    borderWidth: 2,
                 },
             ],
         },
         options: {
-            responsive: true, // Maak de grafiek responsief
-            maintainAspectRatio: false, // Sta dynamische schaal toe
+            responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: true, // Toon de legenda
-                    position: "top", // Positie van de legenda
+                    display: true,
+                    position: "top",
                     labels: {
-                        color: "#1A1952", // Tekstkleur voor de legenda
+                        color: "#1A1952",
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de legenda
+                            family: "Helvetica Neue, Arial, sans-serif",
                         },
                     },
                 },
@@ -71,42 +68,42 @@ onMounted(() => {
             scales: {
                 x: {
                     title: {
-                        display: true, // Toon titel voor de X-as
-                        text: "Plaatsen", // Titeltekst voor de X-as
-                        color: "#6B7280", // Tekstkleur voor de titel van de X-as
+                        display: true,
+                        text: "Plaatsen",
+                        color: "#6B7280",
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de titel van de X-as
+                            family: "Helvetica Neue, Arial, sans-serif",
                         },
                     },
                     ticks: {
-                        color: "#6B7280", // Tekstkleur voor de ticks op de X-as
+                        color: "#6B7280",
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de ticks op de X-as
+                            family: "Helvetica Neue, Arial, sans-serif",
                         },
                     },
                     grid: {
-                        color: "#E5E7EB", // Kleur van de rasterlijnen op de X-as
+                        color: "#E5E7EB",
                     },
                 },
                 y: {
                     title: {
-                        display: true, // Toon titel voor de Y-as
-                        text: "Aantal Klanten", // Titeltekst voor de Y-as
-                        color: "#6B7280", // Tekstkleur voor de titel van de Y-as
+                        display: true,
+                        text: "Aantal Klanten",
+                        color: "#6B7280",
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de titel van de Y-as
+                            family: "Helvetica Neue, Arial, sans-serif",
                         },
                     },
                     ticks: {
-                        color: "#6B7280", // Tekstkleur voor de ticks op de Y-as
+                        color: "#6B7280",
                         font: {
-                            family: "Helvetica Neue, Arial, sans-serif", // Lettertype voor de ticks op de Y-as
+                            family: "Helvetica Neue, Arial, sans-serif",
                         },
                     },
                     grid: {
-                        color: "#E5E7EB", // Kleur van de rasterlijnen op de Y-as
+                        color: "#E5E7EB",
                     },
-                    beginAtZero: true, // Zorg ervoor dat de Y-as begint bij 0
+                    beginAtZero: true,
                 },
             },
         },

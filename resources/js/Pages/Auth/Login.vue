@@ -1,11 +1,9 @@
 <template>
     <div class="bg-[#FCFCFC] min-h-screen relative overflow-hidden">
-        <!-- Gradient Cirkel Links Boven -->
         <div class="absolute top-[-520px] left-[-500px] bg-gradient-to-br from-pink-500 via-red-500 to-orange-500 rounded-full opacity-90 overflow-hidden" style="width: 750px; height: 750px;">
             <img src="https://www.2befresh.nl/wp-content/uploads/2022/08/Screenshot-2022-08-31-at-10.33.34.png" alt="Links Boven Afbeelding" class="w-full h-full opacity-40 object-cover">
         </div>
 
-        <!-- Gradient Cirkel Rechts Boven met Afbeelding -->
         <div class="absolute top-[-380px] right-[-350px] bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 rounded-full opacity-90 overflow-hidden" style="width: 750px; height: 750px;">
             <img src="https://www.2befresh.nl/wp-content/uploads/2023/01/Marketingbureau-2BeFresh.jpg" alt="Rechts Boven Afbeelding" class="w-full h-full opacity-10 object-cover">
         </div>
@@ -38,7 +36,6 @@
                     <div class="mb-6 relative">
                         <label for="password" class="block text-sm font-medium text-gray-700">Wachtwoord</label>
 
-                        <!-- Wachtwoord Invoer -->
                         <input
                             v-model="form.password"
                             :type="passwordVisible ? 'text' : 'password'"
@@ -47,25 +44,20 @@
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
 
-                        <!-- Oogicoon Knop -->
                         <button
                             type="button"
                             @click="togglePasswordVisibility"
                             class="absolute right-3 top-9 text-gray-500 hover:text-gray-800"
                         >
-                            <!-- Toon open oog-icoon als wachtwoord zichtbaar is -->
                             <template v-if="passwordVisible">
-                                <i class="fas fa-eye"></i> <!-- Font Awesome open oog-icoon -->
+                                <i class="fas fa-eye"></i>
                             </template>
 
-                            <!-- Toon gesloten oog-icoon als wachtwoord verborgen is -->
                             <template v-else-if="!passwordVisible">
-                                <i class="fas fa-eye-slash"></i> <!-- Font Awesome gesloten oog-icoon -->
+                                <i class="fas fa-eye-slash"></i>
                             </template>
-
                         </button>
 
-                        <!-- Foutmelding -->
                         <span v-if="form.errors.password" class="text-red-500 text-sm">{{ form.errors.password }}</span>
                     </div>
 
@@ -90,21 +82,19 @@ const form = useForm({
     password: null,
 });
 
-// Reactieve state voor wachtwoordzichtbaarheid
 const passwordVisible = ref(false);
 
-// Methode om wachtwoordzichtbaarheid te schakelen
 const togglePasswordVisibility = () => {
     passwordVisible.value = !passwordVisible.value;
 };
 
 const login = () => {
-    form.post(route("login")); // Zorg ervoor dat route('login') overeenkomt met je backendroute voor inloggen
+    form.post(route("login"));
 };
 </script>
 
 <script>
 export default {
-    layout: null, // Schakel de layout expliciet uit voor deze pagina
+    layout: null,
 };
 </script>

@@ -1,11 +1,9 @@
 <template>
     <div class="bg-[#FCFCFC] min-h-screen relative overflow-hidden">
-        <!-- Gradiëntcirkel Linksboven -->
         <div class="absolute top-[-520px] left-[-500px] bg-gradient-to-br from-pink-500 via-red-500 to-orange-500 rounded-full opacity-90 overflow-hidden" style="width: 750px; height: 750px;">
             <img src="https://www.2befresh.nl/wp-content/uploads/2022/08/Screenshot-2022-08-31-at-10.33.34.png" alt="Linksboven Afbeelding" class="w-full h-full opacity-40 object-cover">
         </div>
 
-        <!-- Gradiëntcirkel Rechtsboven met Afbeelding -->
         <div class="absolute top-[-380px] right-[-350px] bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 rounded-full opacity-90 overflow-hidden" style="width: 750px; height: 750px;">
             <img src="https://www.2befresh.nl/wp-content/uploads/2023/01/Marketingbureau-2BeFresh.jpg" alt="Rechtsboven Afbeelding" class="w-full h-full opacity-10 object-cover">
         </div>
@@ -124,16 +122,16 @@ const form = useForm({
     password: '',
     password_confirmation: '',
     user_rol: '',
-    user_activated: '1', // Standaard op actief
+    user_activated: '1',
 });
 
 const register = () => {
-    form.post(route('gebruiker.store')); // Zorg dat de backendroute overeenkomt met je registratie-endpoint
+    form.post(route('gebruiker.store'));
 };
 </script>
 
 <script>
 export default {
-    layout: null, // Layout expliciet uitschakelen voor deze pagina
+    layout: null,
 };
 </script>

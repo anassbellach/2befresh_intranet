@@ -24,8 +24,8 @@ class ContactenController extends Controller
         }
 
         // Sorting functionality
-        $sortKey = $request->get('sortKey', 'contact_id'); // Default sort key
-        $sortOrder = $request->get('sortOrder', 'asc');    // Default sort order
+        $sortKey = $request->get('sortKey', 'contact_id');
+        $sortOrder = $request->get('sortOrder', 'asc');
         $query->orderBy($sortKey, $sortOrder);
 
         // Paginate the results

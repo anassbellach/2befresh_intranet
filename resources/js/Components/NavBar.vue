@@ -1,6 +1,5 @@
 <template>
     <div class="fixed flex justify-center h-[7.5rem] px-4 w-full z-50">
-        <!-- Outer Container (Centers the Navbar) -->
         <div class="bg-white max-w-6xl w-full flex justify-between items-center rounded-full shadow-lg relative">
             <!-- Logo Section -->
             <a class="flex items-center ml-4" href="/">
@@ -328,7 +327,6 @@
 import {Link, router, usePage} from "@inertiajs/vue3";
 import {ref, computed, onUnmounted} from "vue";
 
-// Get the current user data from the page props
 const page = usePage();
 const user = computed(() => page.props.user);
 
@@ -348,7 +346,7 @@ let hoverTimer = null;
 
 // Function to set the active dropdown when hovering over it
 const setActiveDropdown = (dropdownName) => {
-    if (hoverTimer) clearTimeout(hoverTimer); // Clear any existing timer
+    if (hoverTimer) clearTimeout(hoverTimer);
     activeDropdown.value = dropdownName;
 };
 
@@ -361,7 +359,7 @@ const hideDropdownWithDelay = () => {
 
 // Function to redirect the user to the login page
 const redirectToLogin = () => {
-    router.visit(route('login')); // Adjust the route as needed
+    router.visit(route('login'));
 };
 
 // Track the state of the user dropdown
@@ -389,7 +387,6 @@ onUnmounted(() => {
 
 // Function to handle logout
 const logout = () => {
-    // Use Inertia's visit method to perform a logout request
     router.delete(route('logout'));
 };
 

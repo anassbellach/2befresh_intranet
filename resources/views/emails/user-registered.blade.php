@@ -8,33 +8,35 @@
         body {
             background-color: #f8f9fa;
             color: #333;
-            font-family: ct_font_greycliff_-__manual_, sans-serif;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         .card {
             border: none;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            max-width: 800px; /* Wider layout */
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
             margin: 30px auto;
-            background-color: #ffffff;
+            background-color: #FFFFFF;
             overflow: hidden;
         }
 
         .card-body {
-            padding: 40px; /* Spacious layout */
+            padding: 50px;
             text-align: center;
         }
 
         .card-body img {
-            max-width: 250px; /* Bigger logo */
+            max-width: 250px;
             margin-bottom: 30px;
         }
 
         .card-body h1 {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
-            color: #333333;
+            color: #333333 !important;
             margin-bottom: 20px;
         }
 
@@ -45,7 +47,7 @@
         }
 
         .card-body p:last-of-type {
-            margin-bottom: 10px; /* Reduce space after the last paragraph */
+            margin-bottom: 10px;
         }
 
         .card-body strong {
@@ -65,36 +67,42 @@
             transition: background 0.3s ease-in-out;
         }
 
+        .cta-button:link,
+        .cta-button:visited {
+            color: #ffffff !important;
+            text-decoration: none;
+        }
+
         .cta-button:hover {
             background: linear-gradient(90deg, #d94b6c, #e6882e);
         }
 
         .email-link {
-            color: #007bff; /* Blue color from the screenshot */
-            text-decoration: none; /* No underline */
+            color: #007bff;
+            text-decoration: none;
         }
 
         .email-link:hover {
-            color: #0056b3; /* Darker blue on hover */
+            color: #0056b3;
         }
 
         .footer {
-            margin-top: 5px; /* Further reduce space */
+            margin-top: 20px;
             text-align: center;
             color: #6c757d;
             font-size: 16px;
-            padding: 15px; /* Slightly smaller padding */
+            padding: 15px;
             background-color: #f9f9f9;
             border-top: 1px solid #eeeeee;
         }
 
         .footer a {
-            color: #007bff; /* Blue for URL in the footer */
+            color: #007bff;
             text-decoration: none;
         }
 
         .footer a:hover {
-            color: #0056b3; /* Darker blue on hover */
+            color: #0056b3;
         }
     </style>
 </head>

@@ -115,36 +115,6 @@
                         <span v-if="form.errors.leverancier_land" class="text-red-500 text-sm">{{ form.errors.leverancier_land }}</span>
                     </td>
                 </tr>
-<!--                <tr>-->
-<!--                    <td class="py-2 pr-4">-->
-<!--                        <label for="leverancier_sinds" class="block text-sm font-medium text-gray-700">Leverancier Sinds</label>-->
-<!--                    </td>-->
-<!--                    <td class="py-2">-->
-<!--                        <input-->
-<!--                            v-model="form.leverancier_sinds"-->
-<!--                            type="date"-->
-<!--                            id="leverancier_sinds"-->
-<!--                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"-->
-<!--                        />-->
-<!--                        <span v-if="form.errors.leverancier_sinds" class="text-red-500 text-sm">{{ form.errors.leverancier_sinds }}</span>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td class="py-2 pr-4">-->
-<!--                        <label for="leverancier_actief" class="block text-sm font-medium text-gray-700">Actief</label>-->
-<!--                    </td>-->
-<!--                    <td class="py-2">-->
-<!--                        <select-->
-<!--                            v-model="form.leverancier_actief"-->
-<!--                            id="leverancier_actief"-->
-<!--                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"-->
-<!--                        >-->
-<!--                            <option value="1">Actief</option>-->
-<!--                            <option value="0">Inactief</option>-->
-<!--                        </select>-->
-<!--                        <span v-if="form.errors.leverancier_actief" class="text-red-500 text-sm">{{ form.errors.leverancier_actief }}</span>-->
-<!--                    </td>-->
-<!--                </tr>-->
                 </tbody>
             </table>
 

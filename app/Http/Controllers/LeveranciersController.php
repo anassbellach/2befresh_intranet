@@ -100,7 +100,6 @@ class LeveranciersController extends Controller
 
     public function update(Request $request, Leverancier $leverancier)
     {
-        // Validate and update the leverancier
         $validatedData = $request->validate([
             'leverancier_bedrijfsnaam' => 'required|string|max:255',
             'leverancier_email' => 'nullable|email|max:255',
@@ -170,7 +169,7 @@ class LeveranciersController extends Controller
             ];
         }
 
-        return null; // Return null if no results were found
+        return null;
     }
 
     public function updateCoordinates()

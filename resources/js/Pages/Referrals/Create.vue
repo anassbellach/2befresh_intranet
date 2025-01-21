@@ -82,7 +82,7 @@ const form = useForm({
     titel: "",
     omschrijving: "",
     link: "",
-    referral_activated: "1", // Standaard ingesteld op 'Actief'
+    referral_activated: "1",
 });
 
 const create = () => form.post(route('referral.store'));

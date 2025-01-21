@@ -50,7 +50,6 @@
 import { Link, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
 
-// Get user data and flash message from page props
 const page = usePage();
 const user = computed(() => page.props.user);
 </script>

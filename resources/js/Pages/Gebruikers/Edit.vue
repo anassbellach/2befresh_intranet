@@ -104,22 +104,6 @@
                         <span v-if="form.errors.password" class="text-red-500 text-sm">{{ form.errors.password }}</span>
                     </td>
                 </tr>
-<!--                <tr>-->
-<!--                    <td class="py-2 pr-4">-->
-<!--                        <label for="user_activated" class="block text-sm font-medium text-gray-700">Activatiestatus</label>-->
-<!--                    </td>-->
-<!--                    <td class="py-2">-->
-<!--                        <select-->
-<!--                            v-model="form.user_activated"-->
-<!--                            id="user_activated"-->
-<!--                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"-->
-<!--                        >-->
-<!--                            <option :value="1">Actief</option>-->
-<!--                            <option :value="0">Inactief</option>-->
-<!--                        </select>-->
-<!--                        <span v-if="form.errors.user_activated" class="text-red-500 text-sm">{{ form.errors.user_activated }}</span>-->
-<!--                    </td>-->
-<!--                </tr>-->
                 </tbody>
             </table>
 

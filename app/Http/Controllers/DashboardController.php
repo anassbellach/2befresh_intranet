@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $currentYear = now()->year;
 
-        // Helper function to get counts for the current year
+        // Function to get counts for the current year
         $getCurrentYearCount = fn($model) => $model::whereRaw('YEAR(FROM_UNIXTIME(created_at)) = ?', [$currentYear])->count();
 
         return inertia('Dashboard/Index', [

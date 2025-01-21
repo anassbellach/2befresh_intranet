@@ -87,7 +87,6 @@
 import { onMounted } from "vue";
 import { Chart } from "chart.js/auto";
 
-// Props definitie
 const props = defineProps({
     klanten_count: Number,
     klanten_NewThisYear: Number,
@@ -98,7 +97,6 @@ const props = defineProps({
     klanten_growth_by_year: Object,
 });
 
-// Instellen van de grafiek
 onMounted(() => {
     const klantenGrowthCtx = document
         .getElementById("klantenGrowthChart")

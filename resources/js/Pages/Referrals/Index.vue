@@ -1,10 +1,9 @@
 <template>
     <div class="p-8 max-w-6xl mx-auto">
 
-        <!-- Succesbericht -->
         <success-messages></success-messages>
 
-        <!-- Header Sectie -->
+
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-4xl font-semibold text-gray-900">Referrals</h1>
             <Link
@@ -15,7 +14,6 @@
             </Link>
         </div>
 
-        <!-- Referrals Grid Sectie (2 kaarten per rij) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div
                 v-for="referral in referrals.data"
@@ -31,7 +29,6 @@
                     Gearchiveerd
                 </span>
 
-                <!-- Titel -->
                 <h2
                     :class="referral.deleted_at ? 'text-gray-400 line-through' : 'text-gray-800 hover:text-pink-500'"
                     class="text-2xl font-bold mb-4"
@@ -39,12 +36,11 @@
                     {{ referral.titel }}
                 </h2>
 
-                <!-- Beschrijving -->
                 <p :class="referral.deleted_at ? 'text-gray-400' : 'text-gray-500'" class="text-sm mb-6">
                     {{ referral.omschrijving }}
                 </p>
 
-                <!-- Referral Link en Kopieerknop -->
+
                 <div class="flex items-center mb-6">
                     <input
                         :value="referral.link"
@@ -63,7 +59,6 @@
                     </button>
                 </div>
 
-                <!-- Actieknoppen -->
                 <div class="flex justify-between items-center mt-4">
                     <Link
                         :href="route('referral.edit', { referral: referral.id })"
@@ -93,7 +88,6 @@
 
         </div>
 
-        <!-- Bevestigingsvenster voor verwijderen -->
         <DeleteConfirmationModal
             v-if="showDeleteModal"
             message="Weet je zeker dat je deze referral wilt verwijderen?"
@@ -101,7 +95,6 @@
             @close="handleClose"
         />
 
-        <!-- Paginering Sectie -->
         <div v-if="referrals.data.length" class="flex justify-center mt-8">
             <Pagination :data="referrals" />
         </div>
@@ -115,17 +108,14 @@ import Pagination from "@/Components/UI/Pagination.vue";
 import SuccessMessages from "@/Components/SuccessMessages.vue";
 import DeleteConfirmationModal from "@/Components/DeleteConfirmationModal.vue";
 
-// Toegang tot props die door Inertia worden doorgegeven
 const {props} = usePage();
 const referrals = props.referrals;
 const filters = props.filters;
 
-// Reactieve variabelen definiëren
 const searchQuery = ref(filters.search || "");
 const showDeleteModal = ref(false);
 const referralToDelete = ref(null);
 
-// Methode om de referral-link te kopiëren
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         flash.success = "Link gekopieerd naar klembord!";
@@ -135,12 +125,9 @@ function copyToClipboard(text) {
     });
 }
 
-// Filters bijwerken voor zoekfunctionaliteit
 const updateFilters = () => {
     router.get(route("referral.index"), {...filters, search: searchQuery.value}, {preserveScroll: true});
 };
-
-// Verwijder- en herstelacties
 const openDeleteModal = (referral) => {
     referralToDelete.value = referral;
     showDeleteModal.value = true;

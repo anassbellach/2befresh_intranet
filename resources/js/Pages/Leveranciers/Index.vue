@@ -126,12 +126,10 @@ import Pagination from "@/Components/UI/Pagination.vue";
 import SuccessMessages from "@/Components/SuccessMessages.vue";
 import DeleteConfirmationModal from "@/Components/DeleteConfirmationModal.vue";
 
-// Definieer props
 const { props } = usePage();
 const leveranciers = props.leveranciers;
 const filters = props.filters;
 
-// Definieer reactieve variabelen
 const searchQuery = ref(filters.search || "");
 const showDeleteModal = ref(false);
 const leverancierToDelete = ref(null);
@@ -144,7 +142,6 @@ const headers = [
     { key: "leverancier_actief", label: "Actief" },
 ];
 
-// Filters en sortering bijwerken
 const updateFilters = () => {
     router.get(route("leverancier.index"), { ...filters, search: searchQuery.value }, { preserveScroll: true });
 };

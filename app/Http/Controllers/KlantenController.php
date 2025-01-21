@@ -37,7 +37,7 @@ class KlantenController extends Controller
         // Paginate the results
         $klanten = $query->paginate(10);
 
-        // Return the paginated data to the view
+
         return inertia('Klanten/Index', [
             'klanten' => $klanten,
             'filters' => [
@@ -107,7 +107,7 @@ class KlantenController extends Controller
 
     public function update(Request $request, Klant $klant)
     {
-        // Validate and update the klant
+
         $validatedData = $request->validate([
             'klant_bedrijfsnaam' => 'required|string|max:255',
             'klant_kvk' => 'required|digits:8',
@@ -202,6 +202,6 @@ class KlantenController extends Controller
             ];
         }
 
-        return null; // Return null if no results were found
+        return null;
     }
 }

@@ -23,8 +23,6 @@
 import {usePage} from "@inertiajs/vue3";
 import {onMounted, ref} from "vue";
 
-// Accessing flash message from Inertia's page props
-
 const page = usePage();
 const showFlash = ref(!!page.props.flash.success);
 

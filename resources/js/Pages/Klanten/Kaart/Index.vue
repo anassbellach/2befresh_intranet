@@ -1,16 +1,13 @@
 <template>
     <div class="px-8 pt-4 flex justify-center min-h-screen">
 
-        <!-- Kaartkaart -->
         <div class="rounded-3xl bg-white shadow-2xl w-full max-w-5xl border border-gray-200">
             <div class="p-8">
-                <!-- Header -->
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-4xl font-bold text-[#1A1952] tracking-tight">Klantenkaart</h2>
                 </div>
                 <p class="text-sm text-gray-600 mb-4">Klik op een marker om klantdetails op de kaart te bekijken.</p>
 
-                <!-- Kaartcontainer -->
                 <div
                     id="map"
                     class="rounded-2xl overflow-hidden border border-gray-300 shadow-sm"
@@ -25,16 +22,16 @@
 <script setup>
 import { onMounted, defineProps } from "vue";
 
-// Props om de 'klanten'-data van de controller te accepteren
+
 const props = defineProps({
-    klanten: Array, // Accepteer de klanten-array
+    klanten: Array,
 });
 
 onMounted(() => {
     // Initialiseer de Google Map
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 10,
-        center: { lat: 52.028, lng: 4.901 }, // Standaard middenpunt (pas dynamisch aan indien nodig)
+        center: { lat: 52.028, lng: 4.901 }, // Standaard middenpunt
     });
 
     // Maak een enkele InfoWindow-instantie om te hergebruiken

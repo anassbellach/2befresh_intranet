@@ -9,12 +9,10 @@
                 </button>
             </div>
 
-            <!-- Modal Body -->
             <div class="text-gray-600 mb-8">
                 <p>{{ message }}</p>
             </div>
 
-            <!-- Modal Actions -->
             <div class="flex justify-between items-center">
                 <button
                     @click="handleClose"
@@ -42,20 +40,20 @@ defineProps({
 });
 
 // Emits for parent events
-const emit = defineEmits(["confirm", "close"]); // "close" instead of "cancel"
+const emit = defineEmits(["confirm", "close"]);
 
 // Internal state for modal visibility
 const visible = ref(true);
 
 // Handle the confirm action
 const handleConfirm = () => {
-    emit("confirm"); // Emit confirm event
+    emit("confirm");
     visible.value = false;
 };
 
 // Handle the close action
 const handleClose = () => {
-    emit("close"); // Emit close event
+    emit("close");
     visible.value = false;
 };
 </script>
