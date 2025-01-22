@@ -1,5 +1,5 @@
 <template>
-    <div class="p-8 max-w-4xl mx-auto bg-white shadow-lg rounded-2xl mb-8">
+    <div class="p-8 max-w-6xl mx-auto bg-white shadow-lg rounded-2xl mb-8">
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-semibold text-gray-800">Nieuwe Leverancier Aanmaken</h1>
             <Link
