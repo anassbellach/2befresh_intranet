@@ -27,7 +27,7 @@
             </div>
 
             <!-- Leveranciers Tabel -->
-            <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+            <div v-if="leveranciers.data.length" class="overflow-x-auto bg-white shadow-md rounded-lg">
                 <table class="min-w-full table-auto border-collapse">
                     <!-- Tabel Hoofd -->
                     <thead class="bg-[#1B1952] text-white sticky top-0 z-10">
