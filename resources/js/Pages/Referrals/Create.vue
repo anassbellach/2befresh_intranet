@@ -28,7 +28,6 @@
                             type="text"
                             id="titel"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            required
                         />
                         <span v-if="form.errors.titel" class="text-red-500 text-sm">{{ form.errors.titel }}</span>
                     </td>
@@ -44,7 +43,6 @@
                                 v-model="form.omschrijving"
                                 id="omschrijving"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                required
                             ></textarea>
                         <span v-if="form.errors.omschrijving" class="text-red-500 text-sm">{{ form.errors.omschrijving }}</span>
                     </td>
@@ -61,7 +59,6 @@
                             type="url"
                             id="link"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            required
                         />
                         <span v-if="form.errors.link" class="text-red-500 text-sm">{{ form.errors.link }}</span>
                     </td>
