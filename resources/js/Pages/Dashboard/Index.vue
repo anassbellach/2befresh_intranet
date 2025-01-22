@@ -78,7 +78,15 @@
         <!-- Grafieken Sectie -->
         <div class="p-6 rounded-3xl bg-white shadow-md">
             <h3 class="text-lg font-semibold mb-4">Nieuwe klanten per jaar</h3>
-            <canvas id="klantenGrowthChart" class="max-h-96 w-full"></canvas>
+
+            <!-- Fallback if no data -->
+            <div v-if="Object.keys(klanten_growth_by_year).length === 0" class="text-center text-gray-500 p-6">
+                <i class="fas fa-chart-line text-gray-300 text-6xl mb-4"></i>
+                <p class="text-lg font-medium">Geen gegevens beschikbaar om de grafiek weer te geven.</p>
+            </div>
+
+            <!-- Chart -->
+            <canvas v-else id="klantenGrowthChart" class="max-h-96 w-full"></canvas>
         </div>
     </div>
 </template>
