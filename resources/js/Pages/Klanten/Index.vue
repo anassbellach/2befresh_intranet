@@ -17,7 +17,7 @@
 
 
             <!-- Zoekbalk -->
-            <div class="mb-6">
+            <div v-if="klanten.data.length" class="mb-6">
                 <input
                     v-model="searchQuery"
                     @input="updateFilters"
