@@ -1,11 +1,13 @@
 <template>
-    <div class="p-6 space-y-8 min-h-screen max-w-6xl mx-auto">
-        <div class="p-6 rounded-3xl bg-white shadow-md">
-            <h3 class="text-lg font-semibold mb-4">Leveranciers per Plaats</h3>
-            <p class="text-sm text-gray-400 mb-6">
-                Deze grafiek toont de verdeling van leveranciers over verschillende steden.
-            </p>
-            <canvas id="leveranciersPerPlaatsChart" class="max-h-screen w-full"></canvas>
+    <div class="px-8 pt-4 flex justify-center min-h-full">
+        <div class="rounded-3xl bg-white shadow-2xl w-full max-w-6xl border border-gray-200">
+            <div class="p-8">
+                <h3 class="text-lg font-semibold mb-4">Leveranciers per Plaats</h3>
+                <p class="text-sm text-gray-400 mb-6">
+                    Deze grafiek toont de verdeling van leveranciers over verschillende steden.
+                </p>
+                <canvas id="leveranciersPerPlaatsChart" class="max-h-screen w-full"></canvas>
+            </div>
         </div>
     </div>
 </template>
