@@ -1,5 +1,5 @@
 <template>
-    <div class="px-8 pt-4 flex justify-center min-h-screen">
+    <div class="px-8 pt-4 flex justify-center min-h-full">
 
         <div class="rounded-3xl bg-white shadow-2xl w-full max-w-5xl border border-gray-200">
             <div class="p-8">
