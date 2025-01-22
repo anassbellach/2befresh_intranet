@@ -18,7 +18,9 @@
                 <tbody>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="titel" class="block text-sm font-medium text-gray-700">Titel</label>
+                        <label for="titel" class="block text-sm font-medium text-gray-700">
+                            Titel <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -33,7 +35,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="omschrijving" class="block text-sm font-medium text-gray-700">Omschrijving</label>
+                        <label for="omschrijving" class="block text-sm font-medium text-gray-700">
+                            Omschrijving <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                             <textarea
@@ -47,7 +51,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
+                        <label for="link" class="block text-sm font-medium text-gray-700">
+                            Link <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input

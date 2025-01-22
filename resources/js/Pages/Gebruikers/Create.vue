@@ -22,7 +22,9 @@
 
                 <form @submit.prevent="register">
                     <div class="mb-4">
-                        <label for="user_firstname" class="block text-sm font-medium text-gray-700">Voornaam</label>
+                        <label for="user_firstname" class="block text-sm font-medium text-gray-700">
+                            Voornaam <span class="text-red-500">*</span>
+                        </label>
                         <input
                             v-model="form.user_firstname"
                             type="text"
@@ -34,7 +36,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="user_lastname" class="block text-sm font-medium text-gray-700">Achternaam</label>
+                        <label for="user_lastname" class="block text-sm font-medium text-gray-700">
+                            Achternaam <span class="text-red-500">*</span>
+                        </label>
                         <input
                             v-model="form.user_lastname"
                             type="text"
@@ -46,7 +50,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700">E-mailadres</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700">
+                            E-mailadres <span class="text-red-500">*</span>
+                        </label>
                         <input
                             v-model="form.email"
                             type="email"
@@ -58,7 +64,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="user_rol" class="block text-sm font-medium text-gray-700">Rol</label>
+                        <label for="user_rol" class="block text-sm font-medium text-gray-700">
+                            Rol <span class="text-red-500">*</span>
+                        </label>
                         <select
                             v-model="form.user_rol"
                             id="user_rol"
@@ -73,7 +81,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="password" class="block text-sm font-medium text-gray-700">Wachtwoord</label>
+                        <label for="password" class="block text-sm font-medium text-gray-700">
+                            Wachtwoord <span class="text-red-500">*</span>
+                        </label>
                         <input
                             v-model="form.password"
                             type="password"
@@ -85,7 +95,9 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Bevestig Wachtwoord</label>
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
+                            Bevestig Wachtwoord <span class="text-red-500">*</span>
+                        </label>
                         <input
                             v-model="form.password_confirmation"
                             type="password"

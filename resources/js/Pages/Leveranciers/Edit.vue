@@ -18,7 +18,9 @@
                 <tbody>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="leverancier_bedrijfsnaam" class="block text-sm font-medium text-gray-700">Bedrijfsnaam</label>
+                        <label for="leverancier_bedrijfsnaam" class="block text-sm font-medium text-gray-700">
+                            Bedrijfsnaam <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -32,7 +34,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="leverancier_email" class="block text-sm font-medium text-gray-700">E-mailadres</label>
+                        <label for="leverancier_email" class="block text-sm font-medium text-gray-700">
+                            E-mailadres <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -46,7 +50,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="leverancier_telefoon" class="block text-sm font-medium text-gray-700">Telefoonnummer</label>
+                        <label for="leverancier_telefoon" class="block text-sm font-medium text-gray-700">
+                            Telefoonnummer <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -60,7 +66,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="leverancier_adres" class="block text-sm font-medium text-gray-700">Adres</label>
+                        <label for="leverancier_adres" class="block text-sm font-medium text-gray-700">
+                            Adres <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -74,7 +82,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="leverancier_postcode" class="block text-sm font-medium text-gray-700">Postcode</label>
+                        <label for="leverancier_postcode" class="block text-sm font-medium text-gray-700">
+                            Postcode <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -88,7 +98,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="leverancier_plaats" class="block text-sm font-medium text-gray-700">Plaats</label>
+                        <label for="leverancier_plaats" class="block text-sm font-medium text-gray-700">
+                            Plaats <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -102,7 +114,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="leverancier_land" class="block text-sm font-medium text-gray-700">Land</label>
+                        <label for="leverancier_land" class="block text-sm font-medium text-gray-700">
+                            Land <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <select

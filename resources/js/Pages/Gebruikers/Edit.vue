@@ -20,13 +20,14 @@
                 <tbody>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="user_firstname" class="block text-sm font-medium text-gray-700">Voornaam</label>
+                        <label for="user_firstname" class="block text-sm font-medium text-gray-700">Voornaam <span class="text-red-500">*</span></label>
                     </td>
                     <td class="py-2">
                         <input
                             v-model="form.user_firstname"
                             type="text"
                             id="user_firstname"
+                            required
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                         <span v-if="form.errors.user_firstname" class="text-red-500 text-sm">{{ form.errors.user_firstname }}</span>
@@ -34,13 +35,14 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="user_lastname" class="block text-sm font-medium text-gray-700">Achternaam</label>
+                        <label for="user_lastname" class="block text-sm font-medium text-gray-700">Achternaam <span class="text-red-500">*</span></label>
                     </td>
                     <td class="py-2">
                         <input
                             v-model="form.user_lastname"
                             type="text"
                             id="user_lastname"
+                            required
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                         <span v-if="form.errors.user_lastname" class="text-red-500 text-sm">{{ form.errors.user_lastname }}</span>
@@ -48,13 +50,14 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="user_email" class="block text-sm font-medium text-gray-700">E-mailadres</label>
+                        <label for="user_email" class="block text-sm font-medium text-gray-700">E-mailadres <span class="text-red-500">*</span></label>
                     </td>
                     <td class="py-2">
                         <input
                             v-model="form.email"
                             type="email"
                             id="user_email"
+                            required
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                         <span v-if="form.errors.email" class="text-red-500 text-sm">{{ form.errors.email }}</span>
@@ -62,12 +65,13 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="user_rol" class="block text-sm font-medium text-gray-700">Rol</label>
+                        <label for="user_rol" class="block text-sm font-medium text-gray-700">Rol <span class="text-red-500">*</span></label>
                     </td>
                     <td class="py-2">
                         <select
                             v-model="form.user_rol"
                             id="user_rol"
+                            required
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         >
                             <option value="Directie">Directie</option>
@@ -79,14 +83,14 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="password" class="block text-sm font-medium text-gray-700">Wachtwoord</label>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Wachtwoord <span class="text-gray-500">(Optioneel)</span></label>
                     </td>
                     <td class="py-2 relative">
                         <input
                             v-model="form.password"
                             :type="passwordVisible ? 'text' : 'password'"
                             id="password"
-                            placeholder="Vul je wachtwoord in"
+                            placeholder="Vul je wachtwoord in (optioneel)"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                         <button

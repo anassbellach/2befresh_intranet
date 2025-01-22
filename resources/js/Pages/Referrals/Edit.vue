@@ -18,7 +18,9 @@
                 <tbody>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="titel" class="block text-sm font-medium text-gray-700">Titel</label>
+                        <label for="titel" class="block text-sm font-medium text-gray-700">
+                            Titel <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -26,26 +28,32 @@
                             type="text"
                             id="titel"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required
                         />
                         <span v-if="form.errors.titel" class="text-red-500 text-sm">{{ form.errors.titel }}</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="omschrijving" class="block text-sm font-medium text-gray-700">Omschrijving</label>
+                        <label for="omschrijving" class="block text-sm font-medium text-gray-700">
+                            Omschrijving <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                             <textarea
                                 v-model="form.omschrijving"
                                 id="omschrijving"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                required
                             ></textarea>
                         <span v-if="form.errors.omschrijving" class="text-red-500 text-sm">{{ form.errors.omschrijving }}</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
+                        <label for="link" class="block text-sm font-medium text-gray-700">
+                            Link <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -53,6 +61,7 @@
                             type="url"
                             id="link"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required
                         />
                         <span v-if="form.errors.link" class="text-red-500 text-sm">{{ form.errors.link }}</span>
                     </td>

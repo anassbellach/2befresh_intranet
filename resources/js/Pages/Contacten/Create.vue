@@ -18,7 +18,9 @@
                 <tbody>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_naam" class="block text-sm font-medium text-gray-700">Naam</label>
+                        <label for="contact_naam" class="block text-sm font-medium text-gray-700">
+                            Naam <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -32,7 +34,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_geboortedatum" class="block text-sm font-medium text-gray-700">Geboortedatum</label>
+                        <label for="contact_geboortedatum" class="block text-sm font-medium text-gray-700">
+                            Geboortedatum <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -46,7 +50,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_geslacht" class="block text-sm font-medium text-gray-700">Geslacht</label>
+                        <label for="contact_geslacht" class="block text-sm font-medium text-gray-700">
+                            Geslacht <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <select
@@ -63,7 +69,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_telefoon" class="block text-sm font-medium text-gray-700">Telefoonnummer</label>
+                        <label for="contact_telefoon" class="block text-sm font-medium text-gray-700">
+                            Telefoonnummer <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -77,7 +85,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_telefoon_kantoor" class="block text-sm font-medium text-gray-700">Telefoonnummer (Kantoor)</label>
+                        <label for="contact_telefoon_kantoor" class="block text-sm font-medium text-gray-700">
+                            Telefoonnummer kantoor <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -91,7 +101,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_mail" class="block text-sm font-medium text-gray-700">E-mailadres</label>
+                        <label for="contact_mail" class="block text-sm font-medium text-gray-700">
+                            E-mailadres <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -105,7 +117,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="contact_mail_2" class="block text-sm font-medium text-gray-700">E-mailadres 2</label>
+                        <label for="contact_mail_2" class="block text-sm font-medium text-gray-700">
+                            E-mailadres 2 <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -115,6 +129,44 @@
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
                         <span v-if="form.errors.contact_mail_2" class="text-red-500 text-sm">{{ form.errors.contact_mail_2 }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 pr-4">
+                        <label for="contact_mail_3" class="block text-sm font-medium text-gray-700">
+                            E-mailadres 3 <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
+                    </td>
+                    <td class="py-2">
+                        <input
+                            v-model="form.contact_mail_3"
+                            type="email"
+                            id="contact_mail_2"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                        <span v-if="form.errors.contact_mail_3" class="text-red-500 text-sm">{{ form.errors.contact_mail_3 }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 pr-4">
+                        <label for="contact_voorkeur" class="block text-sm font-medium text-gray-700">
+                            Contact voorkeur <span class="text-gray-500 text-xs italic">(Optioneel)</span>
+                        </label>
+                    </td>
+                    <td class="py-2">
+                        <select
+                            v-model="form.contact_voorkeur"
+                            id="contact_voorkeur"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        >
+                            <option value="Mail">Mail</option>
+                            <option value="Mail 2">Mail 2</option>
+                            <option value="Mail 2">Mail 3</option>
+                            <option value="Telefoon">Telefoon</option>
+                            <option value="Telefoon kantoor">Telefoon kantoor</option>
+                            <option value="Geen voorkeur">Geen voorkeur</option>
+                        </select>
+                        <span v-if="form.errors.contact_voorkeur" class="text-red-500 text-sm">{{ form.errors.contact_voorkeur }}</span>
                     </td>
                 </tr>
                 </tbody>

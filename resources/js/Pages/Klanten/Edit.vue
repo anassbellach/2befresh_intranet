@@ -18,7 +18,9 @@
                 <tbody>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_bedrijfsnaam" class="block text-sm font-medium text-gray-700">Bedrijfsnaam</label>
+                        <label for="klant_bedrijfsnaam" class="block text-sm font-medium text-gray-700">
+                            Bedrijfsnaam <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -33,7 +35,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_kvk" class="block text-sm font-medium text-gray-700">KVK-nummer</label>
+                        <label for="klant_kvk" class="block text-sm font-medium text-gray-700">
+                            KVK-nummer <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -48,7 +52,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_mail" class="block text-sm font-medium text-gray-700">Factuur e-mailadres</label>
+                        <label for="klant_mail" class="block text-sm font-medium text-gray-700">
+                            Factuur e-mailadres <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -63,7 +69,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_telefoon" class="block text-sm font-medium text-gray-700">Algemeen Telefoonnummer</label>
+                        <label for="klant_telefoon" class="block text-sm font-medium text-gray-700">
+                            Algemeen Telefoonnummer <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -78,7 +86,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_adres" class="block text-sm font-medium text-gray-700">Adres</label>
+                        <label for="klant_adres" class="block text-sm font-medium text-gray-700">
+                            Adres <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -93,7 +103,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_postcode" class="block text-sm font-medium text-gray-700">Postcode</label>
+                        <label for="klant_postcode" class="block text-sm font-medium text-gray-700">
+                            Postcode <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -108,7 +120,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_plaats" class="block text-sm font-medium text-gray-700">Plaats</label>
+                        <label for="klant_plaats" class="block text-sm font-medium text-gray-700">
+                            Plaats <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <input
@@ -123,7 +137,9 @@
                 </tr>
                 <tr>
                     <td class="py-2 pr-4">
-                        <label for="klant_land" class="block text-sm font-medium text-gray-700">Land</label>
+                        <label for="klant_land" class="block text-sm font-medium text-gray-700">
+                            Land <span class="text-red-500">*</span>
+                        </label>
                     </td>
                     <td class="py-2">
                         <select
@@ -153,6 +169,7 @@
         </form>
     </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from 'vue';
