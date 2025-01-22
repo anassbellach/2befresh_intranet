@@ -89,7 +89,7 @@
             </div>
 
             <!-- Fallback if table is empty -->
-            <div v-else class="flex flex-col items-center justify-center bg-gray-50 rounded-xl shadow-md p-12 text-center">
+            <div v-else class="flex flex-col items-center justify-center bg-[#FCFCFC] rounded-xl shadow-lg p-12 text-center border border-gray-200">
                 <i class="fas fa-folder-open text-gray-400 text-6xl mb-4"></i>
                 <h2 class="text-2xl font-semibold text-gray-600">Geen referrals gevonden</h2>
                 <p class="text-gray-500 mt-2">
