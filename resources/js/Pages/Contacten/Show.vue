@@ -72,7 +72,7 @@
         <div class="flex justify-end mt-6">
             <Link
                 :href="route('contact.edit', contact.contact_id)"
-                class="w-full text-center bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gradient-to-l"
+                class="w-full text-center bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600 transition-all"
             >
                 Bewerk Leverancier
             </Link>
