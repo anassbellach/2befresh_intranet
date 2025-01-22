@@ -3,7 +3,6 @@
 
         <success-messages></success-messages>
 
-
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-4xl font-semibold text-gray-900">Referrals</h1>
             <Link
@@ -14,78 +13,102 @@
             </Link>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div
-                v-for="referral in referrals.data"
-                :key="referral.id"
-                class="p-8 rounded-2xl shadow-lg transform transition-all duration-300"
-                :class="referral.deleted_at ? 'bg-gray-100 text-gray-500 hover:shadow-md' : 'bg-white hover:shadow-2xl hover:scale-105'"
-            >
-                <!-- Gearchiveerd Badge -->
-                <span
-                    v-if="referral.deleted_at"
-                    class="inline-block px-3 py-1 text-xs font-semibold text-orange-700 bg-orange-200 rounded-full mb-4"
+        <!-- Conditional Wrapper -->
+        <div>
+            <!-- Referrals List -->
+            <div v-if="referrals.data.length" class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div
+                    v-for="referral in referrals.data"
+                    :key="referral.id"
+                    class="p-8 rounded-2xl shadow-lg transform transition-all duration-300"
+                    :class="referral.deleted_at ? 'bg-gray-100 text-gray-500 hover:shadow-md' : 'bg-white hover:shadow-2xl hover:scale-105'"
                 >
+                    <!-- Gearchiveerd Badge -->
+                    <span
+                        v-if="referral.deleted_at"
+                        class="inline-block px-3 py-1 text-xs font-semibold text-orange-700 bg-orange-200 rounded-full mb-4"
+                    >
                     Gearchiveerd
                 </span>
 
-                <h2
-                    :class="referral.deleted_at ? 'text-gray-400 line-through' : 'text-gray-800 hover:text-pink-500'"
-                    class="text-2xl font-bold mb-4"
-                >
-                    {{ referral.titel }}
-                </h2>
-
-                <p :class="referral.deleted_at ? 'text-gray-400' : 'text-gray-500'" class="text-sm mb-6">
-                    {{ referral.omschrijving }}
-                </p>
-
-
-                <div class="flex items-center mb-6">
-                    <input
-                        :value="referral.link"
-                        readonly
-                        class="bg-gray-100 text-gray-600 px-4 py-2 border border-gray-300 rounded-md focus:outline-none w-full"
-                    />
-                    <button
-                        @click="copyToClipboard(referral.link)"
-                        :class="referral.deleted_at
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-gradient-to-r from-pink-500 to-yellow-500 text-white hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600'"
-                        class="px-4 py-2 rounded-md ml-3 transition-all"
-                        :disabled="referral.deleted_at"
+                    <h2
+                        :class="referral.deleted_at ? 'text-gray-400 line-through' : 'text-gray-800 hover:text-pink-500'"
+                        class="text-2xl font-bold mb-4"
                     >
-                        Kopiëren
-                    </button>
-                </div>
+                        {{ referral.titel }}
+                    </h2>
 
-                <div class="flex justify-between items-center mt-4">
-                    <Link
-                        :href="route('referral.edit', { referral: referral.id })"
-                        class="text-blue-600 hover:text-blue-700 transition-all"
-                        v-if="!referral.deleted_at"
-                    >
-                        Bewerken
-                    </Link>
-                    <div class="flex space-x-3">
+                    <p :class="referral.deleted_at ? 'text-gray-400' : 'text-gray-500'" class="text-sm mb-6">
+                        {{ referral.omschrijving }}
+                    </p>
+
+                    <div class="flex items-center mb-6">
+                        <input
+                            :value="referral.link"
+                            readonly
+                            class="bg-gray-100 text-gray-600 px-4 py-2 border border-gray-300 rounded-md focus:outline-none w-full"
+                        />
                         <button
-                            @click="handleDeleteAction(referral)"
+                            @click="copyToClipboard(referral.link)"
+                            :class="referral.deleted_at
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-pink-500 to-yellow-500 text-white hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600'"
+                            class="px-4 py-2 rounded-md ml-3 transition-all"
+                            :disabled="referral.deleted_at"
+                        >
+                            Kopiëren
+                        </button>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-4">
+                        <Link
+                            :href="route('referral.edit', { referral: referral.id })"
+                            class="text-blue-600 hover:text-blue-700 transition-all"
                             v-if="!referral.deleted_at"
-                            class="text-red-600 hover:text-red-700 transition-all"
                         >
-                            Verwijderen
-                        </button>
-                        <button
-                            @click="handleRestore(referral)"
-                            v-else
-                            class="text-orange-600 hover:text-orange-700 font-semibold transition-all"
-                        >
-                            Herstellen
-                        </button>
+                            Bewerken
+                        </Link>
+                        <div class="flex space-x-3">
+                            <button
+                                @click="handleDeleteAction(referral)"
+                                v-if="!referral.deleted_at"
+                                class="text-red-600 hover:text-red-700 transition-all"
+                            >
+                                Verwijderen
+                            </button>
+                            <button
+                                @click="handleRestore(referral)"
+                                v-else
+                                class="text-orange-600 hover:text-orange-700 font-semibold transition-all"
+                            >
+                                Herstellen
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Fallback if table is empty -->
+            <div v-else class="flex flex-col items-center justify-center bg-gray-50 rounded-xl shadow-md p-12 text-center">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-16 w-16 text-gray-400 mb-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9.75 9.75l-3 3m3 0l3-3m-3 3l3 3m6.75-9H9.75A2.25 2.25 0 007.5 9.75v4.5a2.25 2.25 0 002.25 2.25h6.75"
+                    />
+                </svg>
+                <h2 class="text-2xl font-semibold text-gray-600">Geen referrals gevonden</h2>
+                <p class="text-gray-500 mt-2">
+                    Er zijn op dit moment geen referrals beschikbaar. Voeg een nieuwe toe om aan de slag te gaan!
+                </p>
+            </div>
         </div>
 
         <DeleteConfirmationModal
@@ -99,6 +122,7 @@
             <Pagination :data="referrals" />
         </div>
     </div>
+
 </template>
 
 <script setup>
