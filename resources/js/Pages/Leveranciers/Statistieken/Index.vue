@@ -1,5 +1,5 @@
 <template>
-    <div class="p-6 space-y-8 min-h-screen max-w-7xl mx-auto">
+    <div class="p-6 space-y-8 min-h-screen max-w-6xl mx-auto">
         <div class="p-6 rounded-3xl bg-white shadow-md">
             <h3 class="text-lg font-semibold mb-4">Leveranciers per Plaats</h3>
             <p class="text-sm text-gray-400 mb-6">

@@ -1,7 +1,7 @@
 <template>
     <div class="px-8 pt-4 flex justify-center min-h-full">
 
-        <div class="rounded-3xl bg-white shadow-2xl w-full max-w-5xl border border-gray-200">
+        <div class="rounded-3xl bg-white shadow-2xl w-full max-w-6xl border border-gray-200">
             <div class="p-8">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-4xl font-bold text-[#1A1952] tracking-tight">Leverancierskaart</h2>
