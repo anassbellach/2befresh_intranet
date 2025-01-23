@@ -138,7 +138,7 @@ const headers = [
     { key: "klant_plaats", label: "Plaats" },
     { key: "klant_mail", label: "E-mailadres" },
     { key: "klant_sinds", label: "Klant Sinds" },
-    { key: "klant_actief", label: "Actief" },
+    { key: "klant_actief", label: "Status" },
 ];
 const showDeleteModal = ref(false);
 const klantToDelete = ref(null);

@@ -141,7 +141,7 @@ const headers = [
     { key: "contact_naam", label: "Naam" },
     { key: "contact_telefoon", label: "Telefoonnummer" },
     { key: "contact_mail", label: "E-mailadres" },
-    { key: "contact_actief", label: "Actief" },
+    { key: "contact_actief", label: "Status" },
 ];
 
 const showDeleteModal = ref(false);
