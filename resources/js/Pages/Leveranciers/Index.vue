@@ -147,7 +147,7 @@ const headers = [
     { key: "leverancier_bedrijfsnaam", label: "Naam" },
     { key: "leverancier_plaats", label: "Plaats" },
     { key: "leverancier_email", label: "E-mailadres" },
-    { key: "leverancier_actief", label: "Actief" },
+    { key: "leverancier_actief", label: "Status" },
 ];
 
 const updateFilters = () => {
