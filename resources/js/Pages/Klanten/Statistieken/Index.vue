@@ -3,7 +3,7 @@
         <div class="rounded-3xl bg-white shadow-2xl w-full max-w-6xl border border-gray-200">
             <div class="p-8">
                 <h3 class="text-lg font-semibold mb-4">Klanten per Plaats</h3>
-                <p class="text-sm text-gray-400 mb-6">
+                <p v-if="Object.keys(klanten_per_plaats).length !== 0" class="text-sm text-gray-400 mb-6">
                     Deze grafiek toont de verdeling van klanten over verschillende steden.
                 </p>
 
