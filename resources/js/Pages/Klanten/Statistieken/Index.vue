@@ -6,7 +6,15 @@
                 <p class="text-sm text-gray-400 mb-6">
                     Deze grafiek toont de verdeling van klanten over verschillende steden.
                 </p>
-                <canvas id="klantenPerPlaatsChart" class="max-h-screen w-full"></canvas>
+
+                <!-- Fallback if no data -->
+                <div v-if="Object.keys(klanten_growth_by_year).length === 0" class="text-center text-gray-500 p-6">
+                    <i class="fas fa-chart-line text-gray-300 text-6xl mb-4"></i>
+                    <p class="text-lg font-medium">Geen gegevens beschikbaar om de grafiek weer te geven.</p>
+                </div>
+
+                <!-- Chart -->
+                <canvas v-else id="klantenPerPlaatsChart" class="max-h-screen w-full"></canvas>
             </div>
         </div>
     </div>
