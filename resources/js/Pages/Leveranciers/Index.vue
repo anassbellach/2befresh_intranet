@@ -5,11 +5,15 @@
 
         <div class="flex flex-col max-w-6xl mx-auto">
             <!-- Header Sectie -->
-            <div class="flex justify-between items-center mb-8">
-                <h1 class="text-4xl font-semibold text-gray-900">Leveranciers</h1>
+           <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+                <!-- Title -->
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                    Leveranciers
+                </h1>
+                <!-- Button -->
                 <Link
                     :href="route('leverancier.create')"
-                    class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600 transition-all"
+                    class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg text-sm sm:text-base lg:text-lg hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600 transition-all w-full sm:w-auto text-center"
                 >
                     Nieuwe Leverancier Aanmaken
                 </Link>

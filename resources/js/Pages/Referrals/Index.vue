@@ -3,11 +3,15 @@
 
         <success-messages></success-messages>
 
-        <div class="flex justify-between items-center mb-8">
-            <h1 class="text-4xl font-semibold text-gray-900">Referrals</h1>
+        <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+            <!-- Title -->
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+                Referrals
+            </h1>
+            <!-- Button -->
             <Link
                 :href="route('referral.create')"
-                class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600 transition-all"
+                class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-lg text-sm sm:text-base lg:text-lg hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600 transition-all w-full sm:w-auto text-center"
             >
                 Nieuwe Referral Aanmaken
             </Link>
@@ -42,18 +46,19 @@
                         {{ referral.omschrijving }}
                     </p>
 
-                    <div class="flex items-center mb-6">
+                    <!-- Responsive Input and Button -->
+                    <div class="flex flex-col sm:flex-row items-center mb-6 gap-2">
                         <input
                             :value="referral.link"
                             readonly
-                            class="bg-gray-100 text-gray-600 px-4 py-2 border border-gray-300 rounded-md focus:outline-none w-full"
+                            class="bg-gray-100 text-gray-600 px-4 py-2 border border-gray-300 rounded-md focus:outline-none w-full sm:w-3/4"
                         />
                         <button
                             @click="copyToClipboard(referral.link)"
                             :class="referral.deleted_at
-                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-pink-500 to-yellow-500 text-white hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600'"
-                            class="px-4 py-2 rounded-md ml-3 transition-all"
+                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-pink-500 to-yellow-500 text-white hover:bg-gradient-to-r hover:from-pink-600 hover:to-yellow-600'"
+                            class="px-3 sm:px-4 py-2 text-sm sm:text-base rounded-md transition-all w-full sm:w-auto"
                             :disabled="referral.deleted_at"
                         >
                             Kopiëren
@@ -88,7 +93,7 @@
                 </div>
             </div>
 
-            <!-- Fallback if table is empty -->
+            <!-- Fallback if Table is Empty -->
             <div v-else class="flex flex-col items-center justify-center bg-[#FCFCFC] rounded-xl shadow-lg p-12 text-center border border-gray-200">
                 <i class="fas fa-folder-open text-gray-400 text-6xl mb-4"></i>
                 <h2 class="text-2xl font-semibold text-gray-600">Geen referrals gevonden</h2>
@@ -96,7 +101,6 @@
                     Er zijn op dit moment geen referrals beschikbaar. Voeg een nieuwe toe om aan de slag te gaan!
                 </p>
             </div>
-
         </div>
 
         <DeleteConfirmationModal
@@ -110,8 +114,8 @@
             <Pagination :data="referrals" />
         </div>
     </div>
-
 </template>
+
 
 <script setup>
 import {ref} from "vue";
