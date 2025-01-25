@@ -13,7 +13,12 @@
 </head>
     <body>
         @inertia
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGt53_sxryMkf5PmuUSoPZ5xzWswB_5Rk&libraries=places&v=weekly&callback=initMap" async defer></script>
+{{--        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGt53_sxryMkf5PmuUSoPZ5xzWswB_5Rk&libraries=places&v=weekly&callback=initMap" async defer></script>--}}
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGt53_sxryMkf5PmuUSoPZ5xzWswB_5Rk&libraries=places&v=weekly&callback=initMap"
+            async
+            defer
+        ></script>
 
     </body>
 </html>

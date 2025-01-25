@@ -14,7 +14,7 @@
                     Klik op een marker om klantdetails op de kaart te bekijken.
                 </p>
 
-                <!-- Map Container with Responsive Height Using Tailwind CSS -->
+                <!-- Map Container -->
                 <div
                     id="map"
                     class="rounded-2xl overflow-hidden border border-gray-300 shadow-sm h-72 sm:h-96 lg:h-[500px] xl:h-[600px]"
@@ -26,20 +26,44 @@
 </template>
 
 <script setup>
-import { onMounted, defineProps } from "vue";
+import {onMounted, defineProps} from "vue";
 
+// Props
 const props = defineProps({
-    klanten: Array,
+    klanten: Array, // Array of customer data
 });
 
-onMounted(() => {
-    // Initialize the Google Map
+// Function to load Google Maps API dynamically
+const loadGoogleMapsApi = () => {
+    return new Promise((resolve, reject) => {
+        if (typeof google !== "undefined" && google.maps) {
+            resolve(); // API already loaded
+            return;
+        }
+
+        // Create script element for Google Maps
+        const script = document.createElement("script");
+        script.src =
+            "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap";
+        script.async = true;
+        script.defer = true;
+
+        // Handle script load and error events
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error("Failed to load Google Maps API."));
+
+        document.head.appendChild(script);
+    });
+};
+
+// Function to initialize the Google Map
+const initMap = () => {
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 10,
-        center: { lat: 52.028, lng: 4.901 }, // Default center
+        center: {lat: 52.028, lng: 4.901}, // Default center
     });
 
-    // Create a single InfoWindow instance to reuse
+    // Create a reusable InfoWindow instance
     const infoWindow = new google.maps.InfoWindow();
 
     // Add markers for each customer
@@ -51,12 +75,12 @@ onMounted(() => {
             };
 
             const marker = new google.maps.Marker({
-                position: position,
-                map: map,
+                position,
+                map,
                 title: klant.klant_bedrijfsnaam,
             });
 
-            // Show InfoWindow on marker click
+            // Add InfoWindow content
             marker.addListener("click", () => {
                 infoWindow.setContent(`
                     <div class="p-2">
@@ -75,6 +99,15 @@ onMounted(() => {
             });
         }
     });
-});
+};
 
+// Lifecycle hook
+onMounted(async () => {
+    try {
+        await loadGoogleMapsApi(); // Wait for Google Maps API to load
+        initMap(); // Initialize the map after API is loaded
+    } catch (error) {
+        console.error(error.message);
+    }
+});
 </script>
