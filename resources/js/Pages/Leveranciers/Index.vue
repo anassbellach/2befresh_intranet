@@ -5,7 +5,7 @@
 
         <div class="flex flex-col max-w-6xl mx-auto">
             <!-- Header Sectie -->
-           <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+            <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
                 <!-- Title -->
                 <h1 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
                     Leveranciers
@@ -47,7 +47,7 @@
                                 <i :class="filters.sortOrder === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'"></i>
                             </span>
                         </th>
-                        <th class="px-6 py-4">Actie</th>
+                        <th class="px-6 py-4">Acties</th>
                     </tr>
                     </thead>
 
@@ -58,11 +58,11 @@
                         :key="leverancier.leverancier_id"
                         class="hover:bg-gray-50 transition-all"
                     >
-                        <td class="px-6 py-4">{{ leverancier.leverancier_id }}</td>
-                        <td class="px-6 py-4">{{ leverancier.leverancier_bedrijfsnaam }}</td>
-                        <td class="px-6 py-4">{{ leverancier.leverancier_plaats }}</td>
-                        <td class="px-6 py-4">{{ leverancier.leverancier_email }}</td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">{{ leverancier.leverancier_id }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ leverancier.leverancier_bedrijfsnaam }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ leverancier.leverancier_plaats }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ leverancier.leverancier_email }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
                             <span
                                 :class="[leverancier.deleted_at === null
                                     ? 'text-green-800 bg-green-100'
@@ -72,40 +72,43 @@
                                 {{ leverancier.deleted_at === null ? 'Actief' : 'Inactief' }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 flex space-x-2">
-                            <Link
-                                :href="route('leverancier.show', { leverancier: leverancier.leverancier_id })"
-                                class="bg-green-100 text-green-600 px-2 py-1 rounded-lg hover:bg-green-200"
-                                aria-label="Bekijken"
-                            >
-                                <i class="fa-solid fa-eye"></i>
-                            </Link>
-                            <Link
-                                :href="route('leverancier.edit', { leverancier: leverancier.leverancier_id })"
-                                class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-200"
-                                aria-label="Bewerken"
-                            >
-                                <i class="fa-solid fa-pencil-alt"></i>
-                            </Link>
-                            <button
-                                @click="handleDeleteAction(leverancier)"
-                                v-if="!leverancier.deleted_at"
-                                class="bg-red-100 text-red-600 px-2 py-1 rounded-lg hover:bg-red-200"
-                            >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <Link
-                                @click="handleRestore(leverancier)"
-                                v-else
-                                class="bg-orange-100 text-orange-600 px-2 py-1 rounded-lg hover:bg-orange-200"
-                            >
-                                <i class="fa-solid fa-trash-arrow-up"></i>
-                            </Link>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center justify-start gap-2">
+                                <Link
+                                    :href="route('leverancier.show', { leverancier: leverancier.leverancier_id })"
+                                    class="bg-green-100 text-green-600 px-3 py-2 rounded-lg hover:bg-green-200 flex items-center justify-center"
+                                    aria-label="Bekijken"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </Link>
+                                <Link
+                                    :href="route('leverancier.edit', { leverancier: leverancier.leverancier_id })"
+                                    class="bg-blue-100 text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-200 flex items-center justify-center"
+                                    aria-label="Bewerken"
+                                >
+                                    <i class="fa-solid fa-pencil-alt"></i>
+                                </Link>
+                                <button
+                                    v-if="!leverancier.deleted_at"
+                                    @click="handleDeleteAction(leverancier)"
+                                    class="bg-red-100 text-red-600 px-3 py-2 rounded-lg hover:bg-red-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <Link
+                                    v-else
+                                    @click="handleRestore(leverancier)"
+                                    class="bg-orange-100 text-orange-600 px-3 py-2 rounded-lg hover:bg-orange-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash-arrow-up"></i>
+                                </Link>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+
             <!-- Fallback if table is empty -->
             <div v-else class="flex flex-col items-center justify-center bg-[#FCFCFC] rounded-xl shadow-lg p-12 text-center border border-gray-200">
                 <i class="fas fa-folder-open text-gray-400 text-6xl mb-4"></i>
@@ -130,6 +133,7 @@
         </div>
     </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';

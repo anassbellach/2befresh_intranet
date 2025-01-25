@@ -43,8 +43,8 @@
                         >
                             {{ header.label }}
                             <span v-if="filters.sortKey === header.key">
-                                <i :class="filters.sortOrder === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'"></i>
-                            </span>
+                    <i :class="filters.sortOrder === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'"></i>
+                </span>
                         </th>
                         <th class="px-6 py-4">Acties</th>
                     </tr>
@@ -55,43 +55,54 @@
                         :key="klant.klant_id"
                         class="hover:bg-gray-50 transition-all"
                     >
+                        <!-- Data Columns -->
                         <td class="px-6 py-4">{{ klant.klant_id }}</td>
                         <td class="px-6 py-4">{{ klant.klant_bedrijfsnaam }}</td>
                         <td class="px-6 py-4">{{ klant.klant_plaats }}</td>
                         <td class="px-6 py-4">{{ klant.klant_mail }}</td>
                         <td class="px-6 py-4">{{ klant.klant_sinds }}</td>
                         <td class="px-6 py-4">
-                            <span
-                                :class="[klant.deleted_at === null ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100']"
-                                class="px-3 py-1 rounded-full text-xs font-medium"
-                            >
-                                {{ klant.deleted_at === null ? 'Actief' : 'Inactief' }}
-                            </span>
+            <span
+                :class="[klant.deleted_at === null ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100']"
+                class="px-3 py-1 rounded-full text-xs font-medium inline-block"
+            >
+                {{ klant.deleted_at === null ? 'Actief' : 'Inactief' }}
+            </span>
                         </td>
-                        <td class="px-6 py-4 flex space-x-2">
-                            <Link :href="route('klant.show', { klant: klant.klant_id })" class="bg-green-100 text-green-600 px-2 py-1 rounded-lg hover:bg-green-200">
-                                <i class="fa-solid fa-eye"></i>
-                            </Link>
-                            <Link :href="route('klant.edit', { klant: klant.klant_id })" class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-200">
-                                <i class="fa-solid fa-pencil-alt"></i>
-                            </Link>
-                            <button
-                                @click="handleDeleteAction(klant)"
-                                v-if="!klant.deleted_at"
-                                class="bg-red-100 text-red-600 px-2 py-1 rounded-lg hover:bg-red-200"
-                            >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <Link
-                                @click="handleRestore(klant)"
-                                v-else
-                                class="bg-orange-100 text-orange-600 px-2 py-1 rounded-lg hover:bg-orange-200"
-                            >
-                                <i class="fa-solid fa-trash-arrow-up"></i>
-                            </Link>
+                        <!-- Actions Column -->
+                        <td class="px-6 py-4">
+                            <div class="flex items-center justify-start gap-2">
+                                <Link
+                                    :href="route('klant.show', { klant: klant.klant_id })"
+                                    class="bg-green-100 text-green-600 px-3 py-2 rounded-lg hover:bg-green-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </Link>
+                                <Link
+                                    :href="route('klant.edit', { klant: klant.klant_id })"
+                                    class="bg-blue-100 text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-pencil-alt"></i>
+                                </Link>
+                                <button
+                                    v-if="!klant.deleted_at"
+                                    @click="handleDeleteAction(klant)"
+                                    class="bg-red-100 text-red-600 px-3 py-2 rounded-lg hover:bg-red-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <Link
+                                    v-else
+                                    @click="handleRestore(klant)"
+                                    class="bg-orange-100 text-orange-600 px-3 py-2 rounded-lg hover:bg-orange-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash-arrow-up"></i>
+                                </Link>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
+
                 </table>
             </div>
 

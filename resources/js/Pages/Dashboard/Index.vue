@@ -14,7 +14,7 @@
                             <h2 class="font-semibold text-2xl">Klanten</h2>
                         </div>
                         <p class="text-4xl mt-2 font-bold">{{ klanten_count }}</p>
-                        <p class="text-sm mt-2" :class="klanten_NewThisYear > 0 ? 'text-green-500' : 'text-gray-500'">
+                        <p class="text-sm mt-2" :class="klanten_NewThisYear > 0 ? 'text-green-500' : 'text-black'">
                             <span v-if="klanten_NewThisYear > 0">
                                 ▲ {{ klanten_NewThisYear }} nieuwe klanten dit jaar
                             </span>
@@ -38,7 +38,7 @@
                             <h2 class="font-semibold text-2xl">Leveranciers</h2>
                         </div>
                         <p class="text-4xl mt-2 font-bold">{{ leveranciers_count }}</p>
-                        <p class="text-sm mt-2" :class="leveranciers_NewThisYear > 0 ? 'text-green-500' : 'text-gray-500'">
+                        <p class="text-sm mt-2" :class="leveranciers_NewThisYear > 0 ? 'text-green-500' : 'text-black'">
                             <span v-if="leveranciers_NewThisYear > 0">
                                 ▲ {{ leveranciers_NewThisYear }} nieuwe leveranciers dit jaar
                             </span>
@@ -62,7 +62,7 @@
                             <h2 class="font-semibold text-2xl">Contacten</h2>
                         </div>
                         <p class="text-4xl mt-2 font-bold">{{ contacten_count }}</p>
-                        <p class="text-sm mt-2" :class="contacten_NewThisYear > 0 ? 'text-green-500' : 'text-gray-500'">
+                        <p class="text-sm mt-2" :class="contacten_NewThisYear > 0 ? 'text-green-500' : 'text-black'">
                             <span v-if="contacten_NewThisYear > 0">
                                 ▲ {{ contacten_NewThisYear }} nieuwe contacten dit jaar
                             </span>

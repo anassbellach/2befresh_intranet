@@ -30,9 +30,10 @@
                 />
             </div>
 
-            <!-- Tabel -->
+            <!-- Gebruikers Tabel -->
             <div v-if="gebruikers.data.length" class="overflow-x-auto bg-white shadow-md rounded-lg">
                 <table class="min-w-full table-auto border-collapse">
+                    <!-- Tabel Hoofd -->
                     <thead class="bg-[#1B1952] text-white sticky top-0 z-10">
                     <tr>
                         <th
@@ -46,22 +47,23 @@
                                     <i :class="filters.sortOrder === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'"></i>
                                 </span>
                         </th>
-                        <th class="px-6 py-4">Actie</th>
+                        <th class="px-6 py-4">Acties</th>
                     </tr>
                     </thead>
+                    <!-- Tabel Body -->
                     <tbody class="text-gray-700 text-sm divide-y divide-gray-200">
                     <tr
                         v-for="gebruiker in gebruikers.data"
                         :key="gebruiker.user_id"
                         class="hover:bg-gray-50 transition-all"
                     >
-                        <td class="px-6 py-4">{{ gebruiker.user_id }}</td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">{{ gebruiker.user_id }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
                             {{ gebruiker.user_firstname }} {{ gebruiker.user_lastname }}
                         </td>
-                        <td class="px-6 py-4">{{ gebruiker.email }}</td>
-                        <td class="px-6 py-4">{{ gebruiker.user_rol }}</td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 whitespace-nowrap">{{ gebruiker.email }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ gebruiker.user_rol }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
                                 <span
                                     :class="[gebruiker.deleted_at === null ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100']"
                                     class="px-3 py-1 rounded-full text-xs font-medium"
@@ -69,40 +71,43 @@
                                     {{ gebruiker.deleted_at === null ? 'Actief' : 'Inactief' }}
                                 </span>
                         </td>
-                        <td class="px-6 py-4 flex space-x-2">
-                            <Link
-                                :href="route('gebruiker.show', { gebruiker: gebruiker.user_id })"
-                                class="bg-green-100 text-green-600 px-2 py-1 rounded-lg hover:bg-green-200"
-                                aria-label="Bekijk"
-                            >
-                                <i class="fa-solid fa-eye"></i>
-                            </Link>
-                            <Link
-                                :href="route('gebruiker.edit', { gebruiker: gebruiker.user_id })"
-                                class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-200"
-                                aria-label="Bewerken"
-                            >
-                                <i class="fa-solid fa-pencil-alt"></i>
-                            </Link>
-                            <button
-                                @click="handleDeleteAction(gebruiker)"
-                                v-if="!gebruiker.deleted_at"
-                                class="bg-red-100 text-red-600 px-2 py-1 rounded-lg hover:bg-red-200"
-                            >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <Link
-                                @click="handleRestore(gebruiker)"
-                                v-else
-                                class="bg-orange-100 text-orange-600 px-2 py-1 rounded-lg hover:bg-orange-200"
-                            >
-                                <i class="fa-solid fa-trash-arrow-up"></i>
-                            </Link>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center justify-start gap-2">
+                                <Link
+                                    :href="route('gebruiker.show', { gebruiker: gebruiker.user_id })"
+                                    class="bg-green-100 text-green-600 px-3 py-2 rounded-lg hover:bg-green-200 flex items-center justify-center"
+                                    aria-label="Bekijk"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </Link>
+                                <Link
+                                    :href="route('gebruiker.edit', { gebruiker: gebruiker.user_id })"
+                                    class="bg-blue-100 text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-200 flex items-center justify-center"
+                                    aria-label="Bewerken"
+                                >
+                                    <i class="fa-solid fa-pencil-alt"></i>
+                                </Link>
+                                <button
+                                    v-if="!gebruiker.deleted_at"
+                                    @click="handleDeleteAction(gebruiker)"
+                                    class="bg-red-100 text-red-600 px-3 py-2 rounded-lg hover:bg-red-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <Link
+                                    v-else
+                                    @click="handleRestore(gebruiker)"
+                                    class="bg-orange-100 text-orange-600 px-3 py-2 rounded-lg hover:bg-orange-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash-arrow-up"></i>
+                                </Link>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+
             <!-- Fallback if table is empty -->
             <div v-else class="flex flex-col items-center justify-center bg-[#FCFCFC] rounded-xl shadow-lg p-12 text-center border border-gray-200">
                 <i class="fas fa-folder-open text-gray-400 text-6xl mb-4"></i>
@@ -125,9 +130,9 @@
         <div v-if="gebruikers.data.length" class="flex justify-center mt-6">
             <Pagination :data="gebruikers" />
         </div>
-
     </div>
 </template>
+
 
 <script setup>
 import { ref } from "vue";

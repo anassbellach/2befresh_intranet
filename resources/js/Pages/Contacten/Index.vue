@@ -46,7 +46,7 @@
                                 <i :class="filters.sortOrder === 'asc' ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'"></i>
                             </span>
                         </th>
-                        <th class="px-6 py-4">Actie</th>
+                        <th class="px-6 py-4">Acties</th>
                     </tr>
                     </thead>
                     <tbody class="text-gray-700 text-sm divide-y divide-gray-200">
@@ -55,6 +55,7 @@
                         :key="contact.contact_id"
                         class="hover:bg-gray-50 transition-all"
                     >
+                        <!-- Data Columns -->
                         <td class="px-6 py-4">{{ contact.contact_id }}</td>
                         <td class="px-6 py-4">{{ contact.contact_naam }}</td>
                         <td class="px-6 py-4">{{ contact.contact_telefoon }}</td>
@@ -62,47 +63,52 @@
                         <td class="px-6 py-4">
                             <span
                                 :class="[contact.contact_actief === 1 ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100']"
-                                class="px-3 py-1 rounded-full text-xs font-medium"
+                                class="px-3 py-1 rounded-full text-xs font-medium inline-block"
                             >
                                 {{ contact.deleted_at === null ? 'Actief' : 'Inactief' }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 flex space-x-2">
-                            <Link
-                                :href="route('contact.show', { contact: contact.contact_id })"
-                                class="bg-green-100 text-green-600 px-2 py-1 rounded-lg hover:bg-green-200"
-                            >
-                                <i class="fa-solid fa-eye"></i>
-                            </Link>
-                            <Link
-                                :href="route('contact.edit', { contact: contact.contact_id })"
-                                class="bg-blue-100 text-blue-600 px-2 py-1 rounded-lg hover:bg-blue-200"
-                            >
-                                <i class="fa-solid fa-pencil-alt"></i>
-                            </Link>
-                            <!-- Verwijderknop (Activeert de Modal) -->
-                            <button
-                                @click="openDeleteModal(contact)"
-                                v-if="!contact.deleted_at"
-                                class="bg-red-100 text-red-600 px-2 py-1 rounded-lg hover:bg-red-200"
-                            >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <!-- Herstelknop -->
-                            <Link
-                                @click="handleRestore(contact)"
-                                v-else
-                                class="bg-orange-100 text-orange-600 px-2 py-1 rounded-lg hover:bg-orange-200"
-                            >
-                                <i class="fa-solid fa-trash-arrow-up"></i>
-                            </Link>
+                        <!-- Actions Column -->
+                        <td class="px-6 py-4">
+                            <div class="flex items-center justify-start gap-2">
+                                <Link
+                                    :href="route('contact.show', { contact: contact.contact_id })"
+                                    class="bg-green-100 text-green-600 px-3 py-2 rounded-lg hover:bg-green-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                </Link>
+                                <Link
+                                    :href="route('contact.edit', { contact: contact.contact_id })"
+                                    class="bg-blue-100 text-blue-600 px-3 py-2 rounded-lg hover:bg-blue-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-pencil-alt"></i>
+                                </Link>
+                                <button
+                                    @click="openDeleteModal(contact)"
+                                    v-if="!contact.deleted_at"
+                                    class="bg-red-100 text-red-600 px-3 py-2 rounded-lg hover:bg-red-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <Link
+                                    @click="handleRestore(contact)"
+                                    v-else
+                                    class="bg-orange-100 text-orange-600 px-3 py-2 rounded-lg hover:bg-orange-200 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-trash-arrow-up"></i>
+                                </Link>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+
             <!-- Fallback if table is empty -->
-            <div v-else class="flex flex-col items-center justify-center bg-[#FCFCFC] rounded-xl shadow-lg p-12 text-center border border-gray-200">
+            <div
+                v-else
+                class="flex flex-col items-center justify-center bg-[#FCFCFC] rounded-xl shadow-lg p-12 text-center border border-gray-200"
+            >
                 <i class="fas fa-folder-open text-gray-400 text-6xl mb-4"></i>
                 <h2 class="text-2xl font-semibold text-gray-600">Geen contacten gevonden</h2>
                 <p class="text-gray-500 mt-2">
@@ -125,6 +131,8 @@
         />
     </div>
 </template>
+
+
 
 <script setup>
 import { ref } from "vue";
