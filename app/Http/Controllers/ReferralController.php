@@ -46,7 +46,7 @@ class ReferralController extends Controller
             $request->validate([
                 'titel' => 'required|string|max:255',
                 'omschrijving' => 'required|string|max:255',
-                'link' => 'required|string|max:255',
+                'link' => 'required|url|max:255',
             ])
         );
 

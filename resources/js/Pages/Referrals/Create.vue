@@ -53,7 +53,6 @@
                         </label>
                         <input
                             v-model="form.link"
-                            type="url"
                             id="link"
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
