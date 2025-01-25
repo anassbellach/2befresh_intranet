@@ -44,7 +44,7 @@ const loadGoogleMapsApi = () => {
         // Create script element for Google Maps
         const script = document.createElement("script");
         script.src =
-            "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap";
+            "https://maps.googleapis.com/maps/api/js?key=AIzaSyDGt53_sxryMkf5PmuUSoPZ5xzWswB_5Rk&callback=initMap";
         script.async = true;
         script.defer = true;
 
