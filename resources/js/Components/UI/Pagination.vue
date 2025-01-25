@@ -1,77 +1,81 @@
 <template>
-    <div class="flex justify-center items-center space-x-2 my-6">
-        <!-- Previous Button -->
-        <Link
-            v-if="data?.prev_page_url"
-            :href="data.prev_page_url"
-            class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 bg-white text-gray-600 shadow-md hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white hover:shadow-lg"
-            aria-label="Previous"
-        >
-            <i class="fas fa-chevron-left"></i>
-        </Link>
+    <div
+        class="flex justify-start items-center space-x-2 my-6 pb-2 overflow-x-auto scrollbar-hide px-4 snap-x snap-mandatory"
+    >
+    <!-- Previous Button -->
+    <Link
+        v-if="data?.prev_page_url"
+        :href="data.prev_page_url"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 bg-white text-gray-600 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white flex-shrink-0 snap-start"
+        aria-label="Previous"
+    >
+        <i class="fas fa-chevron-left"></i>
+    </Link>
 
-        <!-- First Page Button -->
-        <Link
-            :href="`?page=1`"
-            class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 font-medium"
-            :class="{
-                'bg-gradient-to-r from-pink-500 to-yellow-500 text-white shadow-lg': currentPage === 1,
-                'bg-white text-gray-600 shadow-md hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white hover:shadow-lg': currentPage !== 1
-            }"
-        >
-            1
-        </Link>
+    <!-- First Page Button -->
+    <Link
+        :href="`?page=1`"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 font-medium flex-shrink-0 snap-start shadow-md"
+        :class="{
+        'bg-gradient-to-r from-pink-500 to-yellow-500 text-white shadow-md': currentPage === 1,
+        'bg-white text-gray-600 hover:shadow-lg hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white': currentPage !== 1
+      }"
+    >
+        1
+    </Link>
 
-        <!-- Dots before the visible pages -->
-        <span
-            v-if="showFirstPageDots"
-            class="flex items-center justify-center w-10 h-10 text-gray-600"
-        >
-            ...
-        </span>
+    <!-- Dots before visible pages -->
+    <span
+        v-if="showFirstPageDots"
+        class="flex items-center justify-center w-10 h-10 text-gray-600 flex-shrink-0 snap-start"
+    >
+      ...
+    </span>
 
-        <!-- Visible Page Buttons -->
-        <Link
-            v-for="page in visiblePages"
-            :key="page"
-            :href="`?page=${page}`"
-            class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 font-medium"
-            :class="{
-                'bg-gradient-to-r from-pink-500 to-yellow-500 text-white shadow-lg': currentPage === page,
-                'bg-white text-gray-600 shadow-md hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white hover:shadow-lg': currentPage !== page
-            }"
-        >
-            {{ page }}
-        </Link>
+    <!-- Visible Page Buttons -->
+    <Link
+        v-for="page in visiblePages"
+        :key="page"
+        :href="`?page=${page}`"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 font-medium flex-shrink-0 snap-start shadow-md"
+        :class="{
+        'bg-gradient-to-r from-pink-500 to-yellow-500 text-white shadow-md': currentPage === page,
+        'bg-white text-gray-600 hover:shadow-lg hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white': currentPage !== page
+      }"
+    >
+        {{ page }}
+    </Link>
 
-        <!-- Dots after the visible pages -->
-        <span
-            v-if="showLastPageDots"
-            class="flex items-center justify-center w-10 h-10 text-gray-600"
-        >
-            ...
-        </span>
+    <!-- Dots after visible pages -->
+    <span
+        v-if="showLastPageDots"
+        class="flex items-center justify-center w-10 h-10 text-gray-600 flex-shrink-0 snap-start"
+    >
+      ...
+    </span>
 
-        <!-- Last Page Button -->
-        <Link
-            v-if="currentPage !== totalPages && totalPages > 6"
-            :href="`?page=${totalPages}`"
-            class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 font-medium bg-white text-gray-600 shadow-md hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white hover:shadow-lg"
-        >
-            {{ totalPages }}
-        </Link>
+    <!-- Last Page Button -->
+    <Link
+        v-if="currentPage !== totalPages && totalPages > 6"
+        :href="`?page=${totalPages}`"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 font-medium bg-white text-gray-600 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white flex-shrink-0 snap-start"
+    >
+        {{ totalPages }}
+    </Link>
 
-        <!-- Next Button -->
-        <Link
-            v-if="data?.next_page_url"
-            :href="data.next_page_url"
-            class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 bg-white text-gray-600 shadow-md hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white hover:shadow-lg"
-            aria-label="Next"
-        >
-            <i class="fas fa-chevron-right"></i>
-        </Link>
+    <!-- Next Button -->
+    <Link
+        v-if="data?.next_page_url"
+        :href="data.next_page_url"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 bg-white text-gray-600 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 hover:text-white flex-shrink-0 snap-start"
+        aria-label="Next"
+    >
+        <i class="fas fa-chevron-right"></i>
+    </Link>
     </div>
 </template>
+
+
 
 <script setup>
 import { computed } from 'vue';
